@@ -1,1 +1,47 @@
 /* pages/publish/publish.wxss */
+.publish-form{
+  padding:0 20rpx;
+  border-top: 1px solid var(--light-gray);
+}
+.product-title {
+  padding: 40rpx 0;
+  font-size: 35rpx;
+}
+.product-content{
+  width: auto;
+  height: 200rpx;
+}
+.product-col {
+  padding: 40rpx 0;
+  border-top: 1px solid var(--light-gray);
+}
+.product-col--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-price{
+  width: 5em;
+}
+.product-price::before{
+  content: "￥";
+  position: absolute;
+  margin-left: -1em;
+}
+
+
+.media {
+  display: flex;
+  align-items: center;
+}
+.media__head {
+  margin-right: 40rpx;
+}
+.gray_text {
+  font-size: 0.8rem;
+  color: var(--light-gray);
+}
+.arrowIcon {
+  width: 40rpx;
+  height: 40rpx;
+}

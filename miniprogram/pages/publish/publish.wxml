@@ -1,1 +1,68 @@
-<add-photo></add-photo>
+<view class="publish-form">
+  <form bindsubmit="publishSumbmit">
+    <input
+    type="text"
+    class="product-title"
+    placeholder="宝贝标题，搜索关键"
+    maxlength="20"
+    auto-focus
+    name="title"
+    />
+    <textarea 
+    name="desc"
+    class="product-content"
+    placeholder="详细描述一下你的宝贝吧,最多100字"
+    maxlength="100"
+    ></textarea>
+    <add-photo name="imgUrls"></add-photo>
+    <view class="product-col product-col--flex">
+      <view class="media">
+        <text class="media__head">新旧</text>
+        <number-select class="number-select__wrapper">
+        </number-select>
+      </view>
+      <view class="media">
+        <text class="media__head">可刀</text>
+        <switch></switch>
+      </view>
+    </view>
+    <view class="product-col product-col--flex">
+     <view class="media">
+      <text class="media__head">分类</text>
+      <input disabled name="category" value="{{category}}"/>
+     </view>
+     <view 
+     class="media"
+     bindtap="selectCategory"
+     >
+      <text class="media__head gray_text">选择分类</text>
+      <image src="../../images/left-arrow.png" class="arrowIcon"></image>
+     </view>
+    </view>
+    <view class="product-col product-col--flex">
+      <view class="media">
+        <text class="media__head">售价</text>
+        <input type="number" name="price" 
+        maxlength="5" 
+        placeholder="意向价格"
+        id="product-price"
+        class="product-price"
+        />
+      </view>
+      <view class="media">
+        <text class="media__head">原价</text>
+        <input type="number" name="price" 
+        maxlength="5" 
+        placeholder="可选"
+        id="product-priceOld"
+        class="product-price"
+        />
+      </view>
+    </view>
+  </form>
+  <category-select 
+  categories="{{categories}}"
+  bindcategoryevent="onCategorySelected"
+  wx:if="{{showCategorySelect}}"
+  ></category-select>
+</view>

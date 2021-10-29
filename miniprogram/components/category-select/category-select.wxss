@@ -1,0 +1,38 @@
+/* components/categories/category.wxss */
+.mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--light-mask);
+  z-index: 2;
+}
+.category-select {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top:50%;
+  background-color: #fff;
+  z-index: 2;
+}
+.category-select__head {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--little-gray);
+}
+.category-select__textwrapper{
+  padding: 40rpx 20rpx;
+}
+.category-select__body {
+  height: 100%;
+}
+.category-select__item {
+  text-align: center;
+  line-height: 50rpx;
+}
+.picker-view__indicator {
+  background-color: var(--little-mask);
+  line-height: 50rpx;
+}

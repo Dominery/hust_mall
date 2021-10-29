@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "add-photo":"../../components/add-photo/add-photo"
+    "add-photo":"../../components/add-photo/add-photo",
+    "number-select":"../../components/number-select/number-select",
+    "category-select":"../../components/category-select/category-select"
   }
 }

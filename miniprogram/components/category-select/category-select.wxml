@@ -1,0 +1,26 @@
+<view class="mask"></view>
+<view class="category-select">
+  <view class="category-select__head">
+    <view class="category-select__textwrapper">{{pickedCategory}}</view>
+    <view class="category-select__textwrapper"
+    bindtap="confirm"
+    >确定</view>
+  </view>
+
+    <picker-view
+        class="category-select__body"
+        indicator-class="picker-view__indicator"
+        value="{{[defaultPos]}}"
+        bindchange="pickHandler"
+      >
+        <picker-view-column
+        >
+          <view
+          wx:for="{{categories}}"
+          wx:key="item"
+          class="category-select__item"
+          >{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+
+</view>

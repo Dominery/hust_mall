@@ -5,7 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    categories:['学习','数码','生活','化妆品','衣服','其他'],
+    showCategorySelect:false,
+    category:""
+  },
+  publishSumbmit(e){
+    console.log(e.detail.value)
+  },
+  onCategorySelected(e){
+    const {category} = e.detail
+    this.setData({
+      category,
+      showCategorySelect:false
+    })
+  },
+  selectCategory(){
+    this.setData({
+      showCategorySelect:true
+    })
   },
 
   /**
