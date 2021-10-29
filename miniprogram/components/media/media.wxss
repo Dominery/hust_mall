@@ -1,0 +1,15 @@
+/* components/media/media.wxss */
+.media{
+  display: flex;
+  align-items: center;
+}
+.media__head{
+  padding-right: 40rpx;
+}
+.media--col {
+  flex-direction: column;
+}
+.media--col .media__head{
+  padding-right: 0;
+  padding-bottom: 40rpx;
+}

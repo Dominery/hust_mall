@@ -7,23 +7,28 @@
     maxlength="20"
     auto-focus
     name="title"
+    value="{{clearValue}}"
     />
     <textarea 
     name="desc"
     class="product-content"
     placeholder="详细描述一下你的宝贝吧,最多100字"
     maxlength="100"
+    value="{{clearValue}}"
     ></textarea>
     <add-photo name="imgUrls"></add-photo>
     <view class="product-col product-col--flex">
       <view class="media">
         <text class="media__head">新旧</text>
-        <number-select class="number-select__wrapper">
+        <number-select 
+        class="number-select__wrapper"
+        name="abrase"
+        >
         </number-select>
       </view>
       <view class="media">
         <text class="media__head">可刀</text>
-        <switch></switch>
+        <switch name="bargain"></switch>
       </view>
     </view>
     <view class="product-col product-col--flex">
@@ -47,6 +52,7 @@
         placeholder="意向价格"
         id="product-price"
         class="product-price"
+        value="{{clearValue}}"
         />
       </view>
       <view class="media">
@@ -56,9 +62,53 @@
         placeholder="可选"
         id="product-priceOld"
         class="product-price"
+        value="{{clearValue}}"
         />
       </view>
     </view>
+    <view class="product-col">
+      <view class="media">
+        <text class="media__head">取货方式</text>
+        <radio-group name="getMethod">
+          <label class="padding-right--middle">
+            <radio value="0" checked="true"></radio>
+            送达
+          </label>
+          <label >
+            <radio value="1"></radio>
+            自提
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="product-col">
+      <view class="media">
+        <text class="media__head">位置</text>
+        <input name="pos"
+        placeholder="具体到宿舍楼"
+        />
+      </view>
+    </view>
+    <view class="product-col">
+      <view class="media">
+        <text class="media__head">QQ</text>
+        <input name="qq"
+        placeholder="请输入qq号"
+        />
+      </view>
+    </view>
+    <view class="product-col">
+      <view class="media">
+        <checkbox 
+        class="media__head"
+        name="check"
+        ></checkbox>
+        <text>阅读并同意《相关条款》</text>
+      </view>
+    </view>
+    <button form-type="submit"
+    class="publish-form__submit"
+    >提交</button>
   </form>
   <category-select 
   categories="{{categories}}"

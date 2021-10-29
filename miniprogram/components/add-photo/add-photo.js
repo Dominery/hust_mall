@@ -22,7 +22,16 @@ Component({
     photos: [],
     limit: 4,
     cHeight: 400,
-    cWidth: 400
+    cWidth: 400,
+    value: []
+  },
+  observers:{
+    photos(imgObjs){
+      const value = imgObjs.map(imgObj=>imgObj.path)
+      this.setData({
+        value
+      })
+    }
   },
 
   /**

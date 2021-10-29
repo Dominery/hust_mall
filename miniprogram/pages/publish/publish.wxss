@@ -3,6 +3,12 @@
   padding:0 20rpx;
   border-top: 1px solid var(--light-gray);
 }
+.publish-form__submit {
+  margin: 20rpx 0;
+  background-color: var(--theme-color);
+  height: 100rpx;
+  color: #fff;
+}
 .product-title {
   padding: 40rpx 0;
   font-size: 35rpx;
@@ -27,9 +33,13 @@
   content: "￥";
   position: absolute;
   margin-left: -1em;
+  color: var(--light-gray);
 }
 
 
+.padding-right--middle {
+  padding-right: 100rpx;
+}
 .media {
   display: flex;
   align-items: center;

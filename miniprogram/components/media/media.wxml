@@ -1,0 +1,4 @@
+<view class="{{'media '+ col?'media--col':''}}">
+  <slot class="media__head" name="head"></slot>
+  <slot class="media__body" name="body"></slot>
+</view>

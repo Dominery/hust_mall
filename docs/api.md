@@ -10,7 +10,7 @@
   _openid:'',
   avatarUrl:'',
   nickName: '',
-  sex: number
+  sex: Number
   createdTime: Date,
   updatedTime: Date
 }
@@ -39,7 +39,7 @@
 {
   avatarUrl:'',
   nickName: '',
-  sex: number
+  sex: Number
 }
 ```
 
@@ -57,7 +57,7 @@
 {
   avatarUrl:'',
   nickName: '',
-  sex: number
+  sex: Number
 }
 ```
 
@@ -76,12 +76,15 @@
   data: {
     avatarUrl:'',
     nickName: '',
-    sex: number
+    sex: Number
   }
 }
 ```
 
 ## 商品信息
+
+oldPrice作为可选项，用0表示用户没有输入
+getMethod 0表示送达，1表示自提
 
 ### 创建
 
@@ -92,10 +95,12 @@
   imgUrls:[''],
   title: '',
   desc: '',
-  abrase: number,
+  abrase: Number,
   category: '',
-  price: number,
-  getMethod: number,
+  price: Number,
+  bargain: Boolean,
+  oldPrice:Number,
+  getMethod: Number,
   pos: '',
   qq: '',
   saled: Boolean
@@ -127,6 +132,7 @@
     imgUrls:'',
     title: '',
     price: Number,
+    bargain: Boolean,
     pos: ''
   }]
 }
@@ -146,6 +152,7 @@
     imgUrls:'',
     title: '',
     price: Number,
+    bargain: Boolean,
     pos: ''
   }]
 }
@@ -169,6 +176,7 @@
     imgUrls:'',
     title: '',
     price: Number,
+    bargain: Boolean,
     pos: '',
     saled: Boolean
   }]
@@ -192,9 +200,11 @@
     imgUrls:[''],
     title: '',
     desc: '',
-    abrase: number,
+    abrase: Number,
     price: Number,
-    getMethod: number,
+    bargain: Boolean,
+    oldPrice: Number,
+    getMethod: Number,
     pos: '',
     saled: Boolean
   }

@@ -7,10 +7,14 @@ Page({
   data: {
     categories:['学习','数码','生活','化妆品','衣服','其他'],
     showCategorySelect:false,
-    category:""
+    category:"",
+    clearValue:""
   },
   publishSumbmit(e){
     console.log(e.detail.value)
+    this.setData({
+      clearValue:""
+    })
   },
   onCategorySelected(e){
     const {category} = e.detail
