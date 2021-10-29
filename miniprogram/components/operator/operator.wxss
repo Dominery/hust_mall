@@ -1,0 +1,35 @@
+/* components/operator/operator.wxss */
+.operator {
+  width: 100%;
+  height: 100%;
+  background-color: var(--little-gray);
+  position: relative;
+}
+
+.operator__row,.operator__col {
+  position: absolute;
+  background-color: var(--dark-gray);
+  transform: translate(-50%,-50%);
+}
+
+.operator__row {
+  width: 50%;
+  height: 3%;
+  top: 50%;
+  left: 50%;
+}
+
+.operator__col {
+  width: 3%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+}
+
+.operator--dec .operator__col{
+  display: none;
+}
+
+.operator--light {
+  background-color: #fff;
+}

@@ -1,6 +1,12 @@
 const compressBehavior = require('../../behavior/compress')
 // components/add-photo/add-photo.js
 Component({
+  options: {
+    styleIsolation: 'apply-shared',
+    options: {
+      pureDataPattern: /^_/
+    }
+  },
   behaviors: ["wx://form-field",compressBehavior],
   /**
    * 组件的属性列表

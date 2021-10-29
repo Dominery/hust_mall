@@ -1,15 +1,12 @@
 <view class="add-photo">
-  <view class="add-photo__head">
-    <text class="add-photo__title">图片上传</text>
-    <text class="add-photo__num">{{photos.length}}/{{limit}}</text>
-  </view>
+  <view class="add-photo__num">{{photos.length}}/{{limit}}</view>
   <view class="add-photo__body">
     <view class="add-photo__item"
     wx:for="{{photos}}"
     wx:key="path"
     >
       <view class="stretchy-wrapper">
-        <view class="add-photo__wraper"
+        <view class="stretchy-area"
           bindtap="touchPhoto"
           mark:index="{{index}}"
           >
@@ -27,17 +24,9 @@
     </view>
     
     <view class="add-photo__item" wx:if="{{limit > photos.length}}">
-      <view class="stretchy-wrapper">
-        <view class="add-photo__wraper">   
-          <view
-          class="add-photo__add"
-          bindtap="addPhoto"
-          >
-            <view class="add-photo__add__row"></view>
-            <view class="add-photo__add__col"></view>
-          </view>
-        </view>
-      </view>
+      <operator 
+      bindtouchstart="addPhoto"
+      />
     </view>
   </view>
 </view>

@@ -1,0 +1,10 @@
+<view class="stretchy-wrapper">
+  <view class="stretchy-area">
+    <view
+      class="{{'operator '+ (dec?'operator--dec ':' ') + (light?'operator--light':'')}}"
+      >
+      <view class="operator__row"></view>
+      <view class="operator__col"></view>
+    </view>
+  </view>
+</view>
