@@ -1,0 +1,11 @@
+<!--components/login/login.wxml-->
+<view class="mask">
+</view>
+<view class="authorized-box">
+  <text>为更好提供服务，需要您微信授权</text>
+  <button
+  class="authorized-box__button"
+  bindtap="authorizedLogin"
+  >
+  授权登录</button>
+</view>

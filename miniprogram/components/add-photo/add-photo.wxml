@@ -1,0 +1,46 @@
+<view class="add-photo">
+  <view class="add-photo__head">
+    <text class="add-photo__title">图片上传</text>
+    <text class="add-photo__num">{{photos.length}}/{{limit}}</text>
+  </view>
+  <view class="add-photo__body">
+    <view class="add-photo__item"
+    wx:for="{{photos}}"
+    wx:key="path"
+    >
+      <view class="stretchy-wrapper">
+        <view class="add-photo__wraper"
+          bindtap="touchPhoto"
+          mark:index="{{index}}"
+          >
+            <image src="{{item.path}}" class="add-photo__itemImg"
+            mode="aspectFill"></image>
+            <view class="add-photo__delete" bindlongpress="deletePhoto"
+            mark:index="{{index}}"
+            wx:if="{{item.touch}}"
+            >
+              <image class="add-photo__delete__icon"
+              src="../../images/garbage.png"></image>
+            </view>
+          </view>
+      </view>
+    </view>
+    
+    <view class="add-photo__item" wx:if="{{limit > photos.length}}">
+      <view class="stretchy-wrapper">
+        <view class="add-photo__wraper">   
+          <view
+          class="add-photo__add"
+          bindtap="addPhoto"
+          >
+            <view class="add-photo__add__row"></view>
+            <view class="add-photo__add__col"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<canvas type="2d" id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-2000rpx;top:-2000rpx;"></canvas>
+

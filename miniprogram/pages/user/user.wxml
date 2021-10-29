@@ -1,0 +1,33 @@
+<view class="background-img"></view>
+<view
+class="wraper"
+wx:if="{{authorized}}"
+>
+  <view class="user">
+    <view class="user__profile">
+      <image src="{{userinfo.avatarUrl}}" ></image>
+      <text class="user__name">{{userinfo.name}}</text>
+    </view>
+    <view>
+      <text>我的交易</text>
+      <view class="user__transation">
+        <view class="user__transItem">
+          <text class="user__transnum">{{transaction.publish}}</text>
+          <text class="user__transdesc">我发布的</text>
+        </view>
+        <view class="user__transItem">
+          <text class="user__transnum">{{transaction.saled}}</text>
+          <text class="user__transdesc">我卖出的</text>
+        </view>
+        <view class="user__transItem">
+          <text class="user__transnum">{{transaction.saled}}</text>
+          <text class="user__transdesc">我收藏的</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<authorized-login
+wx:if="{{!authorized}}"
+></authorized-login>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "add-photo":"../../components/add-photo/add-photo"
+  }
+}

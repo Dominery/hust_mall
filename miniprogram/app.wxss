@@ -1,0 +1,21 @@
+button:focus{
+  outline: 0;
+}
+
+button::after{
+  border: none;
+}
+
+page{
+  font-size: 30rpx;
+  --little-gray: #ddd;
+  --light-gray:#C1C0C9;
+  --dark-gray:#aaa;
+  --theme-color:#1FA4FC;
+  --dark-blue:#3A6FF3;
+  --light-blue:#50C7FB;
+  --light-mask: rgba(0,0,0,.2);
+  --light-white-mask:rgba(255,255,255,.5);
+  color:#262628;
+  font-family: PingFangSC-Regular;
+}

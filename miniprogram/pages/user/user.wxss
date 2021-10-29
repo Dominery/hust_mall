@@ -1,0 +1,59 @@
+.background-img {
+  position: absolute;
+  width: 100%;
+  height: 500rpx;
+  background-image: linear-gradient(239deg, var(--dark-blue) 0%, var(--light-blue) 100%);
+  border-radius:0 0 50% 50%;
+  z-index: -1;
+}
+
+.wraper {
+  padding: 0 40rpx;
+  padding-top: 150rpx;
+}
+
+.user {
+  padding:24rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 10rpx rgba(0, 0, 0, 0.2);
+}
+.user__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid var(--light-gray);
+  margin-bottom: 30rpx;
+}
+.user__name {
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.user__profile image {
+  border: 1px solid #fff;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-top: -60rpx;
+}
+.user__transation {
+  display: flex;
+  padding: 30rpx 0;
+}
+
+.user__transItem {
+  flex:1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.user__transnum {
+  display: block;
+  font-size: 60rpx;
+}
+
+.user__transdesc {
+  font-size: 30rpx;
+  color: var(--light-gray);
+}
