@@ -34,7 +34,9 @@
     <view class="product-col product-col--flex">
      <view class="media">
       <text class="media__head">分类</text>
-      <input disabled name="category" value="{{category}}"/>
+      <input disabled name="category" value="{{category}}"
+      style="width: 5em;"
+      />
      </view>
      <view 
      class="media"

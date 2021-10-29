@@ -10,14 +10,14 @@ module.exports = Behavior({
   methods: {
     async compressImg(pathObj){
       const {size,path} = pathObj
-      console.log("original:"+size)
+      // console.log("original:"+size)
       const wxCompressPathObj = await getFileObj(await this._wxCompress(path))
-      console.log("wxCompress:"+wxCompressPathObj.size)
+      // console.log("wxCompress:"+wxCompressPathObj.size)
       if(size<1024*1024){
         return getLessSizePath(wxCompressPathObj,pathObj)
       }
       const canvasCompressPathObj = await getFileObj(await this._canvasCompress(wxCompressPathObj.path))
-      console.log("canvasCompress:"+canvasCompressPathObj.size)
+      // console.log("canvasCompress:"+canvasCompressPathObj.size)
       return getLessSizePath(canvasCompressPathObj,wxCompressPathObj,pathObj)
     },
     _wxCompress(path){

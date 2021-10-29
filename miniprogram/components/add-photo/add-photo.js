@@ -43,6 +43,9 @@ Component({
         count: this.data.limit-this.data.photos.length,
         sizeType:["compressed"]
       }).then(res => {
+        wx.showLoading({
+          title: '压缩中',
+        })
         console.log(res.tempFiles.map(f=>f.size))
         return Promise.all(res.tempFiles.map(async imgObj=>{
           return await this.compressImg(imgObj)
@@ -57,6 +60,17 @@ Component({
         .then(res=>{console.log(res)})
       }).catch(err=>{
         console.log(err)
+      }).finally(()=>{
+        wx.hideLoading()
+          .then(()=>{
+            if(this.data.photos.length<2){
+              wx.showToast({
+                title: '最少两张图片',
+                icon:'none',
+                duration: 1000
+              })
+            }
+          })
       })
     },
     deletePhoto: function (e) {
@@ -106,23 +120,3 @@ async function getFilesSize(paths) {
     filePath: path,
   }).then(res=>res.size)))
 }
-
-
-async function wxCompress(paths) {
-  return Promise.all(paths.map(async path=> await wx.compressImage({
-    src: path,
-    quality: 0
-  }).then(res=>{
-    return res.tempFilePath
-  })))
-}
-
-async function canvasCompress(paths,component) {
-  return Promise.all(paths.map(async path=>{
-    const info = await getImgInfo(path)
-    const size =await getCompressSize(info)
-    const canvas =await getCanvas(component)
-    return await compress({...size,path,info},canvas)
-  }))
-}
-
