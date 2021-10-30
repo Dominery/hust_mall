@@ -7,5 +7,5 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async(event,context) => {
-  return await db.collection("user").doc(event._id).get()
+  return db.collection("user").doc(event._id).get()
 }

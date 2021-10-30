@@ -30,7 +30,7 @@ module.exports = Behavior({
       const info = await getImgInfo(path)
       const compressSize =await this._getCompressSize(info)
       
-      return await this._createImage(path)
+      return this._createImage(path)
               .then(image=>this._getTempFilePath(info,compressSize,image))
     },
     _getCanvas(component) {

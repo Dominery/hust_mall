@@ -3,7 +3,7 @@ const { getUserInfoByOpenId} = require("./js/controller/user")
 //app.js
 async function getOpenid() {
   // 获取openid
-  return await wx.cloud.callFunction({
+  return wx.cloud.callFunction({
     name: "user",
     data: {
       type: "getOpenId"
@@ -14,7 +14,7 @@ async function getOpenid() {
 }
 
 async function judgeAuthorize() {
-  return await wx.getSetting({
+  return wx.getSetting({
     withSubscriptions: true
   }).then(res => {
     return Boolean(res.authSetting['scope.address.userinfo']);

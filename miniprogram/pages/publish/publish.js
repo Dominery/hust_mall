@@ -44,18 +44,18 @@ Page({
     }
   },
   publishSumbmit(e){
-    // this.dataValidate(e.detail.value)
-    // .then(successSubmit)
-    // .catch(message => {
-    //   wx.showToast({
-    //     title: message,
-    //     icon:"error",
-    //     duration:2000
-    //   })
-    // })
+    this.dataValidate(e.detail.value)
+    .then(successSubmit)
+    .catch(message => {
+      wx.showToast({
+        title: message,
+        icon:"error",
+        duration:2000
+      })
+    })
     const that = this;
-    that.clearInput()
     function successSubmit() {
+      that.clearInput()
       wx.showToast({
         title: '成功上传',
         icon: "success",

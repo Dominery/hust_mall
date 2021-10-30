@@ -7,10 +7,10 @@ const getUserInfo = require("./getUserInfo/index")
 exports.main = async (event, context) => {
   switch(event.type){
     case "getOpenId":
-      return await getOpenId.main(event,context);
+      return getOpenId.main(event,context);
     case "register":
-      return await register.main(event,context);
+      return register.main(event,context);
     case "getUserInfo":
-      return await getUserInfo.main(event,context);
+      return getUserInfo.main(event,context);
   }
 }

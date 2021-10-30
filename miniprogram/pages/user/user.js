@@ -29,8 +29,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(isAuthorized()){
-      getUserInfo(getUserid())
+    let userid = getUserid()
+    if(userid){
+      getUserInfo(userid)
         .then(data => {
           this.setData({
             authorized: true,

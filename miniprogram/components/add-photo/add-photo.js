@@ -51,7 +51,7 @@ Component({
         })
         console.log(res.tempFiles.map(f=>f.size))
         return Promise.all(res.tempFiles.map(async imgObj=>{
-          return await this.compressImg(imgObj)
+          return this.compressImg(imgObj)
         }))
       }).then(photoPath => {
         const newPhoto = photoPath.map(path => ({path,touch:false}))
@@ -127,7 +127,7 @@ function getIndex(e) {
 }
 
 async function getFilesSize(paths) {
-  return await Promise.all(paths.map(async path=>await wx.getFileInfo({
+  return Promise.all(paths.map(async path=>await wx.getFileInfo({
     filePath: path,
   }).then(res=>res.size)))
 }

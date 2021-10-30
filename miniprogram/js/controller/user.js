@@ -1,5 +1,5 @@
 async function register(userInfo) {
-  return await wx.cloud.callFunction({
+  return wx.cloud.callFunction({
     name: "user",
     data: {
       type: "register",
@@ -14,7 +14,7 @@ async function register(userInfo) {
 }
 
 async function getUserInfo(userid) {
-  return await wx.cloud.callFunction({
+  return wx.cloud.callFunction({
     name: "user",
     data: {
       type: "getUserInfo",
@@ -25,7 +25,7 @@ async function getUserInfo(userid) {
   })
 }
 async function getUserInfoByOpenId(openid) {
-  return await wx.cloud.callFunction({
+  return wx.cloud.callFunction({
     name: "user",
     data: {
       type: "getUserInfoByOpenId",

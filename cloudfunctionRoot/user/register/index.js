@@ -8,7 +8,7 @@ const db = cloud.database()
 
 exports.main = async (event, context) => {
   const time = db.serverDate();
-  return await db.collection('user').add({
+  return db.collection('user').add({
     data: {...event.data, createdTime:time,updatedTime:time}
   })
 }
