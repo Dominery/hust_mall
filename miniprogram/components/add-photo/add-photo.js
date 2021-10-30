@@ -23,7 +23,10 @@ Component({
     limit: 4,
     cHeight: 400,
     cWidth: 400,
-    value: []
+    value: {
+      type: Array,
+      value:[]
+    }
   },
   observers:{
     photos(imgObjs){
@@ -102,6 +105,9 @@ Component({
   },
   lifetimes:{
     ready(){
+      this.setData({
+        value:[]
+      })
     }
 
   }

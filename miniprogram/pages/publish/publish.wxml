@@ -3,7 +3,7 @@
     <input
     type="text"
     class="product-title"
-    placeholder="宝贝标题，搜索关键"
+    placeholder="{{inputItems.title.placeholder}}"
     maxlength="20"
     auto-focus
     name="title"
@@ -12,7 +12,7 @@
     <textarea 
     name="desc"
     class="product-content"
-    placeholder="详细描述一下你的宝贝吧,最多100字"
+    placeholder="{{inputItems.desc.placeholder}}"
     maxlength="100"
     value="{{clearValue}}"
     ></textarea>
@@ -33,7 +33,7 @@
     </view>
     <view class="product-col product-col--flex">
      <view class="media">
-      <text class="media__head">分类</text>
+      <text class="media__head">{{inputItems.category.info}}</text>
       <input disabled name="category" value="{{category}}"
       style="width: 5em;"
       />
@@ -42,26 +42,27 @@
      class="media"
      bindtap="selectCategory"
      >
-      <text class="media__head gray_text">选择分类</text>
+      <text class="media__head gray_text">{{inputItems.category.placeholder}}</text>
       <image src="../../images/left-arrow.png" class="arrowIcon"></image>
      </view>
     </view>
     <view class="product-col product-col--flex">
       <view class="media">
-        <text class="media__head">售价</text>
+        <text class="media__head">{{inputItems.price.info}}</text>
         <input type="number" name="price" 
         maxlength="5" 
-        placeholder="意向价格"
+        placeholder="{{inputItems.price.placeholder}}"
         id="product-price"
         class="product-price"
         value="{{clearValue}}"
         />
       </view>
       <view class="media">
-        <text class="media__head">原价</text>
-        <input type="number" name="price" 
+        <text class="media__head">{{inputItems.oldPrice.info}}</text>
+        <input type="number" 
+        name="oldPrice" 
         maxlength="5" 
-        placeholder="可选"
+        placeholder="{{inputItems.oldPrice.placeholder}}"
         id="product-priceOld"
         class="product-price"
         value="{{clearValue}}"
@@ -85,28 +86,26 @@
     </view>
     <view class="product-col">
       <view class="media">
-        <text class="media__head">位置</text>
+        <text class="media__head">{{inputItems.pos.info}}</text>
         <input name="pos"
-        placeholder="具体到宿舍楼"
+        placeholder="{{inputItems.pos.placeholder}}"
+        maxlength="20"
         />
       </view>
     </view>
     <view class="product-col">
       <view class="media">
-        <text class="media__head">QQ</text>
+        <text class="media__head">{{inputItems.qq.info}}</text>
         <input name="qq"
-        placeholder="请输入qq号"
+        placeholder="{{inputItems.qq.placeholder}}"
+        maxlength="12"
         />
       </view>
     </view>
     <view class="product-col">
-      <view class="media">
-        <checkbox 
-        class="media__head"
-        name="check"
-        ></checkbox>
-        <text>阅读并同意《相关条款》</text>
-      </view>
+      <clause-check
+      name="check"
+      ></clause-check>
     </view>
     <button form-type="submit"
     class="publish-form__submit"

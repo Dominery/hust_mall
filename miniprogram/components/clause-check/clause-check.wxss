@@ -1,0 +1,30 @@
+/* components/clause-check/clause-check.wxss */
+
+.clause-check{
+  display: flex;
+  align-items: center;
+}
+
+.clause-check__square {
+  border: 1rpx solid var(--light-gray);
+  border-radius: 5rpx;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  position: relative;
+}
+.clause-check__icon {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  left: 50%;
+  top: 50%;
+  margin-left: -15rpx;
+  margin-top: -15rpx;
+  background-color: var(--suceess);
+  border-radius: 3rpx;
+}
+
+.clause-check__jump {
+  color: var(--theme-color);
+}

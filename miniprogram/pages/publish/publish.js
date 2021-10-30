@@ -1,4 +1,7 @@
 // pages/publish/publish.js
+
+const { validator,strEmptyCheck, strMoreThan, numStr, strToNum } = require('../../js/utils/validator')
+
 Page({
 
   /**
@@ -8,13 +11,82 @@ Page({
     categories:['学习','数码','生活','化妆品','衣服','其他'],
     showCategorySelect:false,
     category:"",
-    clearValue:""
+    clearValue:"",
+    inputItems:{
+      title:{
+        info: "标题",
+        placeholder: "宝贝标题，至少5字"
+      },
+      desc: {
+        info: "宝贝描述",
+        placeholder: "详细描述一下你的宝贝吧，至少10字，最多100字"
+      },
+      category:{
+        info:"分类",
+        placeholder:"选择分类"
+      },
+      price: {
+        info: "售价",
+        placeholder: "意向价格"
+      },
+      oldPrice: {
+        info: "原价",
+        placeholder: "选填"
+      },
+      pos: {
+        info: "位置",
+        placeholder: "具体到宿舍楼"
+      },
+      qq: {
+        info: "QQ",
+        placeholder: "请输入qq号"
+      }
+    }
   },
   publishSumbmit(e){
-    console.log(e.detail.value)
-    this.setData({
-      clearValue:""
-    })
+      this.dataValidate(e.detail.value)
+      .then(successSubmit)
+      .catch(message => {
+        wx.showToast({
+          title: message,
+          icon:"error",
+          duration:2000
+        })
+      })
+    const that = this;
+    function successSubmit() {
+      that.setData({
+        clearValue:""
+      })
+      wx.showToast({
+        title: '成功上传',
+        icon: "success",
+        duration: 2000
+      })
+    }
+
+  },
+  async dataValidate(rawData){
+    let data;
+    try{
+      data = await clauseChecked(rawData,"请勾选条款")
+    }catch(message){
+      return Promise.reject(message)
+    }
+    
+    return strEmptyCheck(encodeOldPrice(data))
+      .catch(key=>{
+        const info = this.data.inputItems[key]?.info
+        return Promise.reject(`请输入${info}`)
+      })
+      .then(validator(strMoreThan("title",5),"标题过短"))
+      .then(validator(strMoreThan("desc",10),"内容过短"))
+      .then(validator(checkImgNum,"图片至少2张"))
+      .then(validator(strMoreThan("pos",3),"位置信息过少"))
+      .then(validator(strMoreThan("qq",5),"qq非法"))
+      .then(validator(numStr("qq"),"qq非法"))
+      .then(validator(strToNum("price"),"价格非法"))
+      .then(validator(strToNum("oldPrice"),"原价非法"))
   },
   onCategorySelected(e){
     const {category} = e.detail
@@ -85,3 +157,31 @@ Page({
 
   }
 })
+
+function encodeOldPrice(data) {
+  const {oldPrice } = data
+  if(!oldPrice){
+    return {...data,oldPrice:"0"}
+  }
+  return data
+}
+
+function checkImgNum(data) {
+  return data.imgUrls?.length > 1
+}
+
+/**
+ * 返回一个Promise，如果data的check属性false，拒绝，否则返回一个新对象包含data除check外的其余属性
+ * @param {Object} data 
+ * @param {String} message 
+ * @returns {Promise}
+ */
+function clauseChecked(data,message) {
+  return new Promise((resolve,reject)=>{
+    const{ check,...result }= data
+    if(!check) {
+      reject(message)
+    }
+    resolve(result)
+  })
+}

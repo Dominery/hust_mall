@@ -17,6 +17,7 @@ page{
   --little-mask:rgba(0,0,0,.03);
   --light-mask: rgba(0,0,0,.2);
   --light-white-mask:rgba(255,255,255,.5);
+  --suceess:#09bb07;
   color:#262628;
   font-family: PingFangSC-Regular;
 }

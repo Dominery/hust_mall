@@ -22,14 +22,6 @@ Component({
     pickedCategory:""
   },
   observers:{
-    'categories':function (categories) {
-      const pos = Math.trunc(categories.length/2)
-      const category = this.properties.categories[pos]
-      this.setData({
-        defaultPos: pos,
-        pickedCategory: category
-      })
-    }
   },
 
   /**
@@ -49,6 +41,17 @@ Component({
       const eventDetail = {}
       eventDetail.category = this.properties.pickedCategory
       this.triggerEvent('categoryevent',eventDetail)
+    }
+  },
+  lifetimes: {
+    ready(){
+      const {categories }= this.properties
+      const pos = Math.trunc(categories.length/2)
+      const category = categories[pos]
+      this.setData({
+        defaultPos: pos,
+        pickedCategory: category
+      })
     }
   }
 })

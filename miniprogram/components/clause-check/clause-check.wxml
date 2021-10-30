@@ -1,0 +1,13 @@
+
+<view class="clause-check"
+bindtap="clickCheck"
+>
+  <view class="clause-check__square">
+    <view class="clause-check__icon"
+    wx:if="{{value}}"
+    ></view>
+  </view>
+  <view class="clause-check__info">
+    阅读并同意《<text class="clause-check__jump" catchtap="tapViewClause">相关条款</text>》
+  </view>
+</view>
