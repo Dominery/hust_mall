@@ -1,4 +1,5 @@
-<view class="add-photo">
+<view class="add-photo"
+>
   <view class="add-photo__num">{{photos.length}}/{{limit}}</view>
   <view class="add-photo__body">
     <view class="add-photo__item"

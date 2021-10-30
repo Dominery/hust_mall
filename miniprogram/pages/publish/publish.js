@@ -44,20 +44,18 @@ Page({
     }
   },
   publishSumbmit(e){
-      this.dataValidate(e.detail.value)
-      .then(successSubmit)
-      .catch(message => {
-        wx.showToast({
-          title: message,
-          icon:"error",
-          duration:2000
-        })
-      })
+    // this.dataValidate(e.detail.value)
+    // .then(successSubmit)
+    // .catch(message => {
+    //   wx.showToast({
+    //     title: message,
+    //     icon:"error",
+    //     duration:2000
+    //   })
+    // })
     const that = this;
+    that.clearInput()
     function successSubmit() {
-      that.setData({
-        clearValue:""
-      })
       wx.showToast({
         title: '成功上传',
         icon: "success",
@@ -87,6 +85,12 @@ Page({
       .then(validator(numStr("qq"),"qq非法"))
       .then(validator(strToNum("price"),"价格非法"))
       .then(validator(strToNum("oldPrice"),"原价非法"))
+  },
+  clearInput(){
+    this.setData({
+      clearValue:""
+    })
+    this.selectComponent("#add-photo").clear()
   },
   onCategorySelected(e){
     const {category} = e.detail

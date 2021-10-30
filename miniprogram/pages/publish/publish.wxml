@@ -16,7 +16,9 @@
     maxlength="100"
     value="{{clearValue}}"
     ></textarea>
-    <add-photo name="imgUrls"></add-photo>
+    <add-photo name="imgUrls"
+    id="add-photo"
+    ></add-photo>
     <view class="product-col product-col--flex">
       <view class="media">
         <text class="media__head">新旧</text>

@@ -101,6 +101,11 @@ Component({
       this.setData({
         photos
       })
+    },
+    clear(e){
+      this.setData({
+        photos:[]
+      })
     }
   },
   lifetimes:{
