@@ -4,10 +4,7 @@
 async function getOpenid() {
   // 获取openid
   return wx.cloud.callFunction({
-    name: "user",
-    data: {
-      type: "getOpenId"
-    }
+    name: "getOpenId",
   }).then(resp => {
     return resp.result.openid;
   })
@@ -33,7 +30,10 @@ async function getGloablData(User){
     return
   }
   globalData.userInfo = userInfo;
-  console.log(globalData)
+  wx.setStorage({
+    key: "_openid",
+    value:openid
+  })
   return globalData;
 }
 App({
