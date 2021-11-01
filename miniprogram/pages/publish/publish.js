@@ -2,6 +2,8 @@
 
 const { validator,strEmptyCheck, strMoreThan, numStr, strToNum } = require('../../js/utils/validator')
 
+const { create } = require('../../js/controller/product')
+
 Page({
 
   /**
@@ -45,6 +47,12 @@ Page({
   },
   publishSumbmit(e){
     this.dataValidate(e.detail.value)
+    .then(data =>{
+      wx.showLoading({
+        title: '上传中',
+      })
+      return create(data)
+    })
     .then(successSubmit)
     .catch(message => {
       wx.showToast({
@@ -55,12 +63,15 @@ Page({
     })
     const that = this;
     function successSubmit() {
-      that.clearInput()
-      wx.showToast({
-        title: '成功上传',
-        icon: "success",
-        duration: 2000
-      })
+      // that.clearInput()
+      wx.hideLoading()
+        .then(()=>{
+          wx.showToast({
+            title: '成功上传',
+            icon: "success",
+            duration: 2000
+          })
+        })
     }
 
   },
