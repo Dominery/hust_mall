@@ -1,4 +1,4 @@
-const {register} = require("../../js/controller/user.js")
+const {User} = require("../../js/controller/index.js")
 const appInstance = getApp()
 // components/login/login.js
 Component({
@@ -34,15 +34,11 @@ Component({
       wx.getUserProfile({
         desc: '获取你的昵称、头像、性别及地区'
       }).then(res => {
-        return {...res.userInfo, _openid:appInstance.globalData.openid}
-      }).then(register)
+        appInstance.globalData.userInfo = res.userInfo
+        return res.userInfo
+      }).then(User.register)
       .then(res => {
-        appInstance.globalData.userid = res.result._id;
-        appInstance.globalData.authorized = true;
-        wx.setStorage({
-          key:"userid",
-          value:res.result._id
-        })
+        appInstance.globalData.registered = true;
         const pages = getCurrentPages();
         if(pages.length >0){
           pages[pages.length-1].onLoad()

@@ -1,8 +1,5 @@
-const { getUserInfo } = require("../../js/controller/user")
+
 const appInstance = getApp()
-function isAuthorized() {
-  return appInstance.globalData.authorized;
-}
 function getUserid() {
   return appInstance.globalData.userid;
 }
@@ -13,15 +10,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    authorieed: isAuthorized(),
+    registered: false,
     transaction: {
       publish: 0,
       saled: 0,
       collect: 0,
     },
-    userinfo: {
+    userInfo: {
       avatarUrl: "../../images/home.png",
-      name: "游客"
+      nickName: "游客"
     }
   },
 
@@ -29,18 +26,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userid = getUserid()
-    if(userid){
-      getUserInfo(userid)
-        .then(data => {
-          this.setData({
-            authorized: true,
-            userinfo: {
-              avatarUrl: data.avatarUrl,
-              name: data.nickName
-            }
-          })
-        })
+    this.setData({
+      registered: appInstance.globalData.registered
+    })
+    if(this.data.registered){
+      const {userInfo} = appInstance.globalData;
+      this.setData({
+        userInfo
+      })
     }
   },
 

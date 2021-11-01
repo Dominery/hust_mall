@@ -1,12 +1,12 @@
 <view class="background-img"></view>
 <view
 class="wraper"
-wx:if="{{authorized}}"
+wx:if="{{registered}}"
 >
   <view class="user">
     <view class="user__profile">
-      <image src="{{userinfo.avatarUrl}}" ></image>
-      <text class="user__name">{{userinfo.name}}</text>
+      <image src="{{userInfo.avatarUrl}}" ></image>
+      <text class="user__name">{{userInfo.nickName}}</text>
     </view>
     <view>
       <text>我的交易</text>
@@ -29,5 +29,5 @@ wx:if="{{authorized}}"
 </view>
 
 <authorized-login
-wx:if="{{!authorized}}"
+wx:if="{{!registered}}"
 ></authorized-login>

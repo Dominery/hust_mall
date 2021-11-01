@@ -8,7 +8,7 @@
   _openid:'',
   avatarUrl:'',
   nickName: '',
-  sex: number,
+  gender: number,
   createdTime: Date,
   updatedTime: Date
 }
@@ -18,11 +18,12 @@
 ```json
 {
   _id: '',
-  userid:'',
+  _openid:'',
   imgUrls:[''],
   title: '',
   desc: '',
   abrase: Number,
+  bargin: Boolean,
   category: '',
   price: Number,
   getMethod: Number,
@@ -37,7 +38,7 @@
 ```json
 {
   _id: '',
-  userid: '',
+  _openid: '',
   productid: '',
   createTime: Date
 }

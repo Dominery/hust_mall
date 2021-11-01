@@ -1,4 +1,4 @@
-const { getUserInfoByOpenId} = require("./js/controller/user")
+
 
 //app.js
 async function getOpenid() {
@@ -21,22 +21,19 @@ async function judgeAuthorize() {
   })
 }
 
-async function getGloablData(){
+
+async function getGloablData(User){
   const globalData = {}
-  globalData.authorized = await judgeAuthorize();
-  const userid =await wx.getStorage({key:"userid"})
-                        .then(res=>res.data)
-                        .catch(()=>"");
-  if(userid){
-    globalData.userid = userid;
-    return globalData;
+  const openid = await wx.getStorage({key:"_openid"})
+                  .then(res=>res.data)
+                  .catch(res=>'') || await getOpenid();
+  const userInfo = await User.getInfo(openid);
+  globalData.registered = Boolean(userInfo);
+  if(!userInfo){
+    return
   }
-  globalData.openid = await getOpenid(); // 没有userid 需要获取openid
-  if(globalData.authorized){ // 如果用户已注册
-    const userInfo = await getUserInfoByOpenId(globalData.openid)
-    globalData.userid = userInfo._id;
-    wx.setStorage({key:"userid",value:userInfo._id})
-  }
+  globalData.userInfo = userInfo;
+  console.log(globalData)
   return globalData;
 }
 App({
@@ -54,7 +51,8 @@ App({
       })
     }
     this.globalData = {}
-    getGloablData()
+    const {User} = require('./js/controller/index')
+    getGloablData(User)
       .then(data => {
         this.globalData = data;
       })

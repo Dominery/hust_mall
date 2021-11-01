@@ -7,10 +7,9 @@
 提交
 ```json
 {
-  _openid:'',
   avatarUrl:'',
   nickName: '',
-  sex: Number
+  gender: Number,
   createdTime: Date,
   updatedTime: Date
 }
@@ -25,26 +24,6 @@
 
 ### 登录
 
-缓存期限内
-
-提交
-```json
-{
-  _id:''
-}
-```
-
-返回
-```json
-{
-  avatarUrl:'',
-  nickName: '',
-  sex: Number
-}
-```
-
-超出期限
-
 提交
 ```json
 {
@@ -55,9 +34,11 @@
 返回
 ```json
 {
-  avatarUrl:'',
-  nickName: '',
-  sex: Number
+  data: {
+    avatarUrl:'',
+    nickName: '',
+    gender: Number
+  }
 }
 ```
 
@@ -66,7 +47,7 @@
 提交
 ```json
 {
-  _id: ''
+  _openid: ''
 }
 ```
 
@@ -76,7 +57,7 @@
   data: {
     avatarUrl:'',
     nickName: '',
-    sex: Number
+    gender: Number
   }
 }
 ```
@@ -91,7 +72,7 @@ getMethod 0表示送达，1表示自提
 提交
 ```json
 {
-  userid:'',
+  _openid:'',
   imgUrls:[''],
   title: '',
   desc: '',
@@ -128,7 +109,7 @@ getMethod 0表示送达，1表示自提
 {
   data: [{
     _id:'',
-    userid:'',
+    _openid:'',
     imgUrls:'',
     title: '',
     price: Number,
@@ -148,7 +129,7 @@ getMethod 0表示送达，1表示自提
 {
   data: [{
     _id:'',
-    userid:'',
+    _openid:'',
     imgUrls:'',
     title: '',
     price: Number,
@@ -172,7 +153,7 @@ getMethod 0表示送达，1表示自提
 {
   data: [{
     _id:'',
-    userid:'',
+    _openid:'',
     imgUrls:'',
     title: '',
     price: Number,
@@ -196,7 +177,7 @@ getMethod 0表示送达，1表示自提
 ```json
 {
   data: {
-    userid:'',
+    _openid:'',
     imgUrls:[''],
     title: '',
     desc: '',
@@ -217,7 +198,7 @@ getMethod 0表示送达，1表示自提
 ```json
 {
   _id: [''],
-  userid: ''
+  _openid: ''
 }
 ```
 
@@ -233,7 +214,7 @@ getMethod 0表示送达，1表示自提
 提交
 ```json
 {
-  userid: '',
+  _openid: '',
   _id:['']
 }
 ```
@@ -250,7 +231,7 @@ getMethod 0表示送达，1表示自提
 提交
 ```json
 {
-  userid:''
+  _openid:''
 }
 ```
 
