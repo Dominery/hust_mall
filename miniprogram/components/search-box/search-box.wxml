@@ -1,0 +1,21 @@
+<view class="search-box">
+  <view class="search-box__wrapper">
+    <icon class="search-box__cancel" type="cancel"
+    wx:if="{{showCancel}}"
+    bindtap="clearInput"
+    ></icon>
+    <input type="text" 
+    model:value="{{inputValue}}"
+    class="search-box__input"
+    bindfocus="inputFocus"
+    bindblur="inputBlur"
+    bindinput="inputHandler"
+    placeholder="{{placeholder}}"
+    />
+    <icon 
+    type="search"
+    class="{{'search-box__search '+ (middle ?'search-box__search--middle':'')}}"
+    bindtap="submit"
+    ></icon>
+  </view>
+</view>

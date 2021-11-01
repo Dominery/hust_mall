@@ -1,0 +1,9 @@
+.home-headbac {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 200rpx;
+  z-index: -1;
+  background-color: var(--dark-blue);
+}

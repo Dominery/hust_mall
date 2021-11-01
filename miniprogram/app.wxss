@@ -12,7 +12,7 @@ page{
   --light-gray:#C1C0C9;
   --dark-gray:#aaa;
   --theme-color:#1FA4FC;
-  --dark-blue:#3A6FF3;
+  --dark-blue:#053f92;
   --light-blue:#50C7FB;
   --little-mask:rgba(0,0,0,.03);
   --light-mask: rgba(0,0,0,.2);

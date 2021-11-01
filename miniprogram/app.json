@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/publish/publish",
     "pages/user/user",
-    "pages/home/home",
     "pages/clause/clause"
   ],
   "window": {
