@@ -7,16 +7,19 @@
     indicator-color="#aaa"
     indicator-active-color="#1FA4FC"
     autoplay
+    circular
     class="home-ad"
     >
       <swiper-item>
         <image 
-        src="http://placehold.it/150x150"
+        mode="aspectFill"
+        src="../../images/hust_1.png"
         ></image>
       </swiper-item>
       <swiper-item>
         <image 
-        src="http://placehold.it/150x150"
+        mode="aspectFill"
+        src="../../images/hust_2.png"
         ></image>
       </swiper-item>
     </swiper>

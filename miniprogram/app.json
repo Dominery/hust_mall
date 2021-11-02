@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/product/product",
     "pages/home/home",
+    "pages/product/product",
     "pages/publish/publish",
     "pages/user/user",
     "pages/clause/clause"

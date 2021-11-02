@@ -1,6 +1,6 @@
 <view class="product-bar">
   <block
-  wx:if="{{openid !== ownerid}}"
+  wx:if="{{openid !== product._openid}}"
   >
   <image 
   class="product-bar__collect" 
@@ -12,7 +12,7 @@
   <button 
   class="product-bar__button product-bar__button--normal"
   bindtap="setQQtoClip"
-  wx:if="{{openid !== ownerid}}"
+  wx:if="{{openid !== product._openid}}"
   >复制QQ号</button>
   <button 
   wx:elif="{{!saled}}"

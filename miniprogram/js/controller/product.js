@@ -38,6 +38,13 @@ function getList(tab) {
   }).get().then(res=>res.data)
 }
 
+function markSaled(_id) {
+  return collection.doc(_id).update({
+    data: {
+      saled: true
+    }
+  })
+}
 module.exports = {
-  create,getList
+  create,getList, markSaled
 }

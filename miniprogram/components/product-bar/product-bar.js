@@ -1,3 +1,5 @@
+const { Collection, Product } = require('../../js/controller/index')
+const appInstance = getApp()
 // components/product-bar/product-bar.js
 Component({
   /**
@@ -14,10 +16,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    _qq:'2333',
     collected:false,
     openid: '',
-    ownerid: '1',
     saled: true,
     _lock: false
   },
@@ -27,8 +27,9 @@ Component({
    */
   methods: {
     setQQtoClip(){
+      if(!this._hasAccess())return
       wx.setClipboardData({
-        data: this.data._qq,
+        data: this.data.product.qq,
       }).then(res=>{
         wx.showModal({
           showCancel:false,
@@ -39,14 +40,26 @@ Component({
       })
     },
     collectTapHandler(){
+      if(!this._hasAccess())return
       if(this.data._lock) return
       this.data._lock = true
 
       const collected = !this.data.collected
-      this.setData({
-        collected
-      })
-      this.data._lock = false
+
+      this._collectionChange(collected)
+        .then(res=>{
+          this.setData({
+            collected
+          })
+          return wx.showToast({
+            title: collected?'关注成功':'取消关注成功',
+            icon: 'success',
+            duration: 1500
+          })
+        }).then(res=>{
+          this.data._lock = false
+        })
+
     },
     markSaled(){
       wx.showModal({
@@ -55,13 +68,59 @@ Component({
         content: "如果确认售出，该商品将无法检索到"
       }).then(res=>{
         if(res.confirm){
-          wx.showToast({
-            title: '操作成功',
-            icon:'success',
-            duration: 1000
-          })
+          this._saleProduct(this.data.product._id)
         }
       })
+    },
+    _collectionChange(collected){
+      if(collected){
+        return Collection.follow(this.data.product._id)
+      }else {
+        return Collection.unfollow(this.data.openid,this.data.product._id)
+      }
+    },
+    _hasAccess(){
+      if(this.data.openid){
+        return true
+      }
+      wx.showToast({
+        title: '请登录',
+        icon: 'error'
+      })
+      return false
+    },
+    _saleProduct(productid){
+      Product.markSaled(productid)
+      .then(res=>{
+        return wx.showToast({
+          title: '操作成功',
+          icon:'success',
+          duration: 1000
+        })
+      }).then(res => {
+        this.setData({
+          saled:true
+        })
+      })
+    }
+  },
+  lifetimes: {
+    ready(){
+      const openid = appInstance?.globalData?.userInfo?._openid || ''
+      this.setData({
+        openid
+      })
+      this.setData({
+        saled: Boolean(this.data.product.saled)
+      })
+
+
+      Collection.isFollowed(openid,this.data.product._id)
+        .then(data=>{
+          this.setData({
+            collected: Boolean(data)
+          })
+        })
     }
   }
 })

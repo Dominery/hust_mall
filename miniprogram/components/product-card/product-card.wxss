@@ -12,6 +12,7 @@
 .product-card__img {
   width: 220rpx;
   height: auto;
+  min-height: 180rpx;
 }
 .product-card__img--col{
   width: 100%;

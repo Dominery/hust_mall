@@ -1,22 +1,32 @@
 // pages/product/product.js
+function transformNumToStr(num) {
+  if(num<0 || num>9) return ''
+  const template = '零一二三四五六七八九'
+  return template[num]
+}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    product:{}
+    product:{},
+    abrase:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     console.log(options.query)
-    // const eventChanel = this.getOpenerEventChannel()
-    // eventChanel.on('productInfo',product=>{
-    //   console.log(product)
-    // })
+    const eventChanel = this.getOpenerEventChannel()
+    eventChanel.on('productInfo',product=>{
+      this.setData({
+        product,
+        abrase: transformNumToStr(product.abrase)
+      })
+    })
   },
 
   /**
