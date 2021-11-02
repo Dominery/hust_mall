@@ -8,7 +8,10 @@ Component({
       type: Boolean,
       value: false
     },
-    product: {}
+    product: {
+      type:Object,
+      value: {}
+    }
   },
 
   /**

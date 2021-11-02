@@ -53,6 +53,8 @@
       <product-card 
       col="{{true}}"
       product="{{item}}"
+      id="{{item._id}}"
+      bindtap="productTabHandler"
       ></product-card>
     </view>
   </view>

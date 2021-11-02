@@ -22,6 +22,15 @@ Page({
     })
     this._setProductList(currentTab)
   },
+  productTabHandler(e){
+    const productId = e.target.id
+    const product = this.data.products.find(item=>item._id===productId)
+    wx.navigateTo({
+      url: `../product/product?_id=${productId}`
+    }).then(res=>{
+      res.eventChannel.emit('productInfo',product)
+    })
+  },
   _setProductList(tab){
     Product.getList(tab)
     .then(products=>{
