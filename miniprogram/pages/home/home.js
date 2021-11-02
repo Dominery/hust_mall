@@ -1,4 +1,5 @@
 const {categories} = require('../../js/data')
+const { Product } = require('../../js/controller/index')
 // pages/home/home.js
 Page({
 
@@ -7,15 +8,26 @@ Page({
    */
   data: {
     categories:categories,
-    currentTab:'recommend'
+    currentTab:'recommend',
+    products:[]
   },
   scrollNav(e){
     // console.log(e)
   },
   navTapHandler(e){
-    console.log(e)
+    const currentTab = e.target.id
+    if(currentTab===this.data.currentTab) return
     this.setData({
-      currentTab:e.target.id
+      currentTab
+    })
+    this._setProductList(currentTab)
+  },
+  _setProductList(tab){
+    Product.getList(tab)
+    .then(products=>{
+      this.setData({
+        products
+      })
     })
   },
 
@@ -23,7 +35,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.categories)
+    this._setProductList(this.data.currentTab)
   },
 
   /**

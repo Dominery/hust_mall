@@ -25,6 +25,19 @@ async function create(data){
   }
 }
 
+function getRecommendList() {
+  return collection.get().then(res=>res.data)
+}
+
+function getList(tab) {
+  if(tab==="recommend"){
+    return getRecommendList()
+  }
+  return collection.where({
+    category: tab
+  }).get().then(res=>res.data)
+}
+
 module.exports = {
-  create
+  create,getList
 }

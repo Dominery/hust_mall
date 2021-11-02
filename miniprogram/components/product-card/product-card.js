@@ -7,7 +7,8 @@ Component({
     col: {
       type: Boolean,
       value: false
-    }
+    },
+    product: {}
   },
 
   /**

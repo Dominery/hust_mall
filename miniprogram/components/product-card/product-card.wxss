@@ -50,13 +50,19 @@
   font-size: 0.6em;
 }
 
-.product-card__bargin {
+.product-card__bargin, .product-card__saled {
   display: inline-block;
   padding: 5rpx 10rpx;
-  background-color: var(--dark-hightlight);
   border-radius: 5rpx;
   font-size: .6em;
   color: #fff;
+}
+.product-card__bargin{
+  background-color: var(--dark-hightlight);
+}
+
+.product-card__saled {
+  background-color: var(--light-gray);
 }
 
 .product-card__pos {

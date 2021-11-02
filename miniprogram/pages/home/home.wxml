@@ -26,7 +26,6 @@
   scroll-x 
   class="nav" 
   scroll-with-animation
-  bindscroll="scrollNav" 
   scroll-into-view="{{currentTab}}"
   bounces
   >
@@ -46,14 +45,15 @@
   </view>
 </scroll-view>
   <view class="product-list">
-    <view class="product-container">
-      <product-card col="{{true}}"></product-card>
-    </view>
-    <view class="product-container">
-      <product-card col="{{true}}"></product-card>
-    </view>
-    <view class="product-container">
-      <product-card col="{{true}}"></product-card>
+    <view 
+    class="product-container"
+    wx:for="{{products}}"
+    wx:key = "_id"
+    >
+      <product-card 
+      col="{{true}}"
+      product="{{item}}"
+      ></product-card>
     </view>
   </view>
 </view>
