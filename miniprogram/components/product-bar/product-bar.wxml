@@ -1,0 +1,26 @@
+<view class="product-bar">
+  <block
+  wx:if="{{openid !== ownerid}}"
+  >
+  <image 
+  class="product-bar__collect" 
+  src="../../images/{{collected?'collection_fill.png':'collection.png'}}"
+  bindtap="collectTapHandler"
+  ></image>
+  </block>
+
+  <button 
+  class="product-bar__button product-bar__button--normal"
+  bindtap="setQQtoClip"
+  wx:if="{{openid !== ownerid}}"
+  >复制QQ号</button>
+  <button 
+  wx:elif="{{!saled}}"
+  class="product-bar__button product-bar__button--warn"
+  bindtap="markSaled"
+  >标记售出</button>
+  <button
+  wx:else
+  class="product-bar__button product-bar__button--unable"
+  >已售出</button>
+</view>

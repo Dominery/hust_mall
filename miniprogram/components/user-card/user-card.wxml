@@ -1,0 +1,5 @@
+<view class="user-card">
+  <image class="user-card__img" src="{{imgUrl}}">
+  </image>
+  <text class="user-card__name">{{name}}</text>
+</view>

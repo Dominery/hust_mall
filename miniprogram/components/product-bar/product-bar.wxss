@@ -1,0 +1,32 @@
+/* components/product-bar/product-bar.wxss */
+.product-bar{
+  overflow: hidden;
+}
+
+.product-bar__collect {
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 5rpx;
+}
+
+.product-bar__button {
+  float: right;
+  /* height: 60rpx; */
+  font-size: .9rem;
+  line-height: 1.5;
+  padding: 10rpx 20rpx;
+  color: #fff;
+}
+
+.product-bar__button--normal {
+  background-color: var(--theme-color);
+}
+
+.product-bar__button--warn {
+  background-color: var(--hightlight);
+}
+
+.product-bar__button--unable {
+  background-color: var(--light-gray);
+}

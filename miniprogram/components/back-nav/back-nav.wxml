@@ -1,0 +1,9 @@
+<view class="back-nav">
+  <image class="back-nav__icon" src="../../images/left-arrow.png"
+  bindtap="backTapHandler"
+  ></image>
+  <view class="back-nav__title">{{title}}</view>
+  <view class="back-nav__operate">
+    <slot></slot>
+  </view>
+</view>

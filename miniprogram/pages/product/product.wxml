@@ -1,2 +1,50 @@
-<!--pages/product/product.wxml-->
-<text>pages/product/product.wxml</text>
+<back-nav></back-nav>
+<view class="product-page">
+  <view class="product-wrapper white">
+    <text class="product-title">dklgjlglgjlg</text>
+    <view class="product-priceInfo">
+      <text class="product-price"><text class="product__priceIcon">￥</text>1233</text>
+      <text class="product-oldPrice">原价￥122</text>
+      <text 
+      class="product-bargin"
+      >可刀</text>
+    </view>
+    <view class="product-tag">
+      <text class="product-tag__name">磨损程度</text>
+      <text class="product-tag__value">九成新</text>
+      <text class="product-tag__name">取货方式</text>
+      <text>送达</text>
+    </view>
+    <view class="product-pos">华科沁苑</view>
+  </view>
+  <swiper
+    indicator-dots
+    circular
+    indicator-color="#aaa"
+    indicator-active-color="#1FA4FC"
+    autoplay
+    class="product-img"
+    >
+    <swiper-item>
+      <image 
+      mode="aspectFill"
+      src="http://placehold.it/150x150"
+      ></image>
+    </swiper-item>
+    <swiper-item>
+      <image 
+      src="http://placehold.it/150x150"
+      ></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="product-wrapper">
+    <view class="product-content">
+      <view class="product-content__title">商品信息</view>
+      <view class="product-content__desc">
+        可能付款放得开给VNKGV能否的咖啡机多功能房
+      </view>
+    </view>
+  </view>
+</view>
+<product-bar class="product-bottom"></product-bar>
