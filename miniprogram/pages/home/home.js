@@ -1,3 +1,4 @@
+const {categories} = require('../../js/data')
 // pages/home/home.js
 Page({
 
@@ -5,14 +6,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    categories:categories,
+    currentTab:'recommend'
+  },
+  scrollNav(e){
+    // console.log(e)
+  },
+  navTapHandler(e){
+    console.log(e)
+    this.setData({
+      currentTab:e.target.id
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(this.data.categories)
   },
 
   /**

@@ -1,4 +1,59 @@
-<view class="page-wraper">
-  <view class="home-headbac"></view>
-  <search-box></search-box>
+<view class="home-page">
+<view class="home-headbac"></view>
+  <view class="page-wrapper">
+    <search-box></search-box>
+    <swiper
+    indicator-dots
+    indicator-color="#aaa"
+    indicator-active-color="#1FA4FC"
+    autoplay
+    class="home-ad"
+    >
+      <swiper-item>
+        <image 
+        src="http://placehold.it/150x150"
+        ></image>
+      </swiper-item>
+      <swiper-item>
+        <image 
+        src="http://placehold.it/150x150"
+        ></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <scroll-view 
+  scroll-x 
+  class="nav" 
+  scroll-with-animation
+  bindscroll="scrollNav" 
+  scroll-into-view="{{currentTab}}"
+  bounces
+  >
+  <view 
+  class="nav-item {{currentTab==='recommend'?'nav-item--active':''}}"
+  id="recommend"
+  bindtap="navTapHandler"
+  >推荐</view>
+  <view 
+  wx:for="{{categories}}"
+  wx:key="id"
+  id="{{item.id}}"
+  class="nav-item {{currentTab===item.id?'nav-item--active':''}}"
+  bindtap="navTapHandler"
+  >
+    {{item.value}}
+  </view>
+</scroll-view>
+  <view class="product-list">
+    <view class="product-container">
+      <product-card col="{{true}}"></product-card>
+    </view>
+    <view class="product-container">
+      <product-card col="{{true}}"></product-card>
+    </view>
+    <view class="product-container">
+      <product-card col="{{true}}"></product-card>
+    </view>
+  </view>
 </view>

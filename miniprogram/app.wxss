@@ -5,6 +5,10 @@ button:focus{
 button::after{
   border: none;
 }
+image {
+  width: 100%;
+  height: 100%;
+}
 
 page{
   font-size: 30rpx;
@@ -17,6 +21,8 @@ page{
   --little-mask:rgba(0,0,0,.03);
   --light-mask: rgba(0,0,0,.2);
   --light-white-mask:rgba(255,255,255,.5);
+  --hightlight:#fc5531;
+  --dark-hightlight:#ff455b;
   --suceess:#09bb07;
   color:#262628;
   font-family: PingFangSC-Regular;

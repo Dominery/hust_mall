@@ -1,0 +1,15 @@
+<view class="product-card {{col?'product-card--col':''}}">
+  <image 
+  class="product-card__img  {{col?'product-card__img--col':''}}"
+  src="http://placehold.it/150x150"
+  mode="{{col?'widthFix':'aspectFill'}}"
+  ></image>
+  <view class="product-card__content">
+    <text class="product-card__title">江山社稷富春山居乐享桃源图江山社稷富春山居乐享桃源图</text>
+    <view class="product-card__priceInfo">
+      <text class="product-card__price"><text class="product-card__priceIcon">￥</text>123</text>
+      <text class="product-card__bargin">可刀</text>
+    </view>
+    <text class="product-card__pos">北京</text>
+  </view>
+</view>

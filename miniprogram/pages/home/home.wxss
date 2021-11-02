@@ -1,9 +1,55 @@
-.home-headbac {
+.home-page {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  height: 200rpx;
-  z-index: -1;
+  bottom: 0;
+  background-color: var(--little-gray);
+  overflow-y: auto;
+}
+.page-wrapper {
+  padding: 0 20rpx;
+}
+.home-headbac {
+  height: 240rpx;
+  margin-bottom: -240rpx;
   background-color: var(--dark-blue);
+}
+.home-ad {
+  margin-top: 40rpx;
+}
+
+.nav {
+  white-space: nowrap;
+  width: 100%;
+  background-color: #fff;
+}
+.nav-item {
+  display: inline-block;
+  padding: 1em 1em;
+  min-width: 3em;
+  text-align: center;
+}
+
+.nav-item--active {
+  color: var(--hightlight);
+}
+.nav-item--active::before{
+  content:'';
+  position: absolute;
+  background-color: var(--hightlight);
+  width: 1.5em;
+  height: .2em;
+  margin-top: 1.5em;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-container {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10rpx 10rpx;
 }

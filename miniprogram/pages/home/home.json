@@ -1,6 +1,7 @@
 {
   "navigationBarBackgroundColor": "#053f92",
   "usingComponents": {
-    "search-box":"../../components/search-box/search-box"
+    "search-box":"../../components/search-box/search-box",
+    "product-card":"../../components/product-card/product-card"
   }
 }

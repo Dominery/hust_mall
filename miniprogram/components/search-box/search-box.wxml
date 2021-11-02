@@ -14,7 +14,7 @@
     />
     <icon 
     type="search"
-    class="{{'search-box__search '+ (middle ?'search-box__search--middle':'')}}"
+    class="search-box__search {{middle ?'search-box__search--middle':''}}"
     bindtap="submit"
     ></icon>
   </view>

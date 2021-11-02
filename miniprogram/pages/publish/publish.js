@@ -4,13 +4,15 @@ const { validator,strEmptyCheck, strMoreThan, numStr, strToNum } = require('../.
 
 const { create } = require('../../js/controller/product')
 
+const { categories } = require('../../js/data')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    categories:['学习','数码','生活','化妆品','衣服','其他'],
+    categories:categories.map(category=>category.value),
     showCategorySelect:false,
     category:"",
     clearValue:"",
@@ -46,7 +48,9 @@ Page({
     }
   },
   publishSumbmit(e){
-    this.dataValidate(e.detail.value)
+    const formData = e.detail.valut
+    const category = categories.find(item=>item.value===formData.category)
+    this.dataValidate({...formData,category})
     .then(data =>{
       wx.showLoading({
         title: '上传中',
