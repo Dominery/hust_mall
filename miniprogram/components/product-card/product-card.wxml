@@ -1,7 +1,7 @@
 <view class="product-card {{col?'product-card--col':''}}">
   <image 
   class="product-card__img  {{col?'product-card__img--col':''}}"
-  src="{{product.imgUrls[0]}}"
+  src="{{imgUrl}}"
   mode="{{col?'widthFix':'aspectFill'}}"
   lazy-load
   ></image>

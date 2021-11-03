@@ -4,23 +4,31 @@ class="wraper"
 wx:if="{{registered}}"
 >
   <view class="user">
-    <view class="user__profile">
-      <image src="{{userInfo.avatarUrl}}" ></image>
-      <text class="user__name">{{userInfo.nickName}}</text>
+    <view class="user__card">
+      <media 
+      imgUrl = "{{userInfo.avatarUrl}}"
+      caption = "{{userInfo.nickName}}"
+      ></media>
     </view>
     <view>
       <text>我的交易</text>
       <view class="user__transation">
-        <view class="user__transItem">
-          <text class="user__transnum">{{transaction.publish}}</text>
+        <view 
+        class="user__transItem"
+        bindtap="userPublishRoute"
+        >
+          <text class="user__transnum">{{publish.length}}</text>
           <text class="user__transdesc">我发布的</text>
         </view>
-        <view class="user__transItem">
-          <text class="user__transnum">{{transaction.saled}}</text>
+        <view 
+        class="user__transItem"
+        bindtap="userSaledRoute"
+        >
+          <text class="user__transnum">{{saled.length}}</text>
           <text class="user__transdesc">我卖出的</text>
         </view>
         <view class="user__transItem">
-          <text class="user__transnum">{{transaction.saled}}</text>
+          <text class="user__transnum">{{collect}}</text>
           <text class="user__transdesc">我收藏的</text>
         </view>
       </view>

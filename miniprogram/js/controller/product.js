@@ -1,5 +1,5 @@
 const db = wx.cloud.database()
-const collection = db.collection('product')
+const Product = db.collection('product')
 
 
 function uploadImg(imgLocalPaths) {
@@ -16,7 +16,7 @@ async function create(data){
   try{
     const imgUrls = await uploadImg(data.imgUrls)
     console.log(imgUrls)
-    return await collection.add({
+    return await Product.add({
       data:{...data,imgUrls,createdTime:time}
     })
   }catch(err){
@@ -26,25 +26,35 @@ async function create(data){
 }
 
 function getRecommendList() {
-  return collection.get().then(res=>res.data)
+  return Product.where({
+    saled: false
+  }).get().then(res=>res.data)
 }
 
 function getList(tab) {
   if(tab==="recommend"){
     return getRecommendList()
   }
-  return collection.where({
-    category: tab
+  return Product.where({
+    category: tab,
+    saled: false
   }).get().then(res=>res.data)
 }
 
 function markSaled(_id) {
-  return collection.doc(_id).update({
+  return Product.doc(_id).update({
     data: {
       saled: true
     }
   })
 }
+
+function getUserProduct(_openid) {
+  return Product.where({
+    _openid
+  }).get().then(res=>res.data)
+}
+
 module.exports = {
-  create,getList, markSaled
+  create,getList, markSaled, getUserProduct
 }

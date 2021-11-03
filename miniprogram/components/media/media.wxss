@@ -1,15 +1,20 @@
 /* components/media/media.wxss */
-.media{
-  display: flex;
-  align-items: center;
+.media {
+  text-align: center;
+  padding: 10rpx 0;
+  overflow: hidden;
+  font-size: 1rem;
 }
-.media__head{
-  padding-right: 40rpx;
+.media__img {
+  border: 1px solid #fff;
+  width: 3em;
+  height: 3em;
+  border-radius: 1.5em;
 }
-.media--col {
-  flex-direction: column;
-}
-.media--col .media__head{
-  padding-right: 0;
-  padding-bottom: 40rpx;
+.media__name {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-top: .25em;
+  font-size: 1rem;
 }

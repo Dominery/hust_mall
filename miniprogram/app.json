@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/user_publish/user_publish",
     "pages/home/home",
+    "pages/user/user",
     "pages/product/product",
     "pages/publish/publish",
-    "pages/user/user",
-    "pages/clause/clause"
+    "pages/clause/clause",
+    "pages/user_saled/user_saled"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFF"

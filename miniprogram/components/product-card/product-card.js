@@ -18,7 +18,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    imgUrl: '../../images/loading.gif'
   },
 
   /**
@@ -26,5 +26,12 @@ Component({
    */
   methods: {
 
+  },
+  lifetimes: {
+    ready(){
+      this.setData({
+        imgUrl: this.data.product.imgUrls[0]
+      })
+    }
   }
 })

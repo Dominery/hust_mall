@@ -1,8 +1,7 @@
 
+const { Product } = require('../../js/controller/index')
 const appInstance = getApp()
-function getUserid() {
-  return appInstance.globalData.userid;
-}
+
 // pages/user/user.js
 Page({
 
@@ -11,15 +10,27 @@ Page({
    */
   data: {
     registered: false,
-    transaction: {
-      publish: 0,
-      saled: 0,
-      collect: 0,
-    },
+    publish: [],
+    saled: [],
+    collect: 0,
     userInfo: {
       avatarUrl: "../../images/home.png",
       nickName: "游客"
     }
+  },
+  userPublishRoute(){
+    wx.navigateTo({
+      url: '../user_publish/user_publish',
+    }).then(res=>{
+      res.eventChannel.emit('productList',this.data.publish)
+    })
+  },
+  userSaledRoute(){
+    wx.navigateTo({
+      url: '../user_saled/user_saled',
+    }).then(res=>{
+      res.eventChannel.emit('productInfo',this.data.saled)
+    })
   },
 
   /**
@@ -29,12 +40,22 @@ Page({
     this.setData({
       registered: appInstance.globalData.registered
     })
-    if(this.data.registered){
-      const {userInfo} = appInstance.globalData;
-      this.setData({
-        userInfo
-      })
+    if(!this.data.registered){
+      return
     }
+    const {userInfo} = appInstance.globalData;
+    this.setData({
+      userInfo
+    })
+
+    Product.getUserProduct(userInfo._openid)
+      .then(data=>{
+        const group = groupBy(data,item=>item.saled)
+        this.setData({
+          saled: group.get(true),
+          publish: group.get(false)
+        })
+      })
   },
 
   /**
@@ -86,3 +107,17 @@ Page({
 
   }
 })
+
+
+function groupBy(data,mapFunc) {
+  const result = new Map()
+  data.forEach(value=>{
+    const key = mapFunc(value)
+    if(result.has(key)){
+      result.get(key).push(value)
+    }else {
+      result.set(key,[value])
+    }
+  })
+  return result
+}

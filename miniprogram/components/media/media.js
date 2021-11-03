@@ -4,9 +4,13 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    col: {
-      type: Boolean,
-      value: false
+    imgUrl: {
+      type:String,
+      value:''
+    },
+    caption: {
+      type: String,
+      value:''
     }
   },
 

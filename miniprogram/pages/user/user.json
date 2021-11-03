@@ -1,6 +1,7 @@
 {
   "navigationBarBackgroundColor": "#1FA4FC",
   "usingComponents": {
-    "authorized-login":"../../components/authorized-login/authorized-login"
+    "authorized-login":"../../components/authorized-login/authorized-login",
+    "media":"../../components/media/media"
   }
 }

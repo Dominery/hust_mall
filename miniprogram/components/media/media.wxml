@@ -1,4 +1,5 @@
-<view class="{{'media '+ col?'media--col':''}}">
-  <slot class="media__head" name="head"></slot>
-  <slot class="media__body" name="body"></slot>
+<view class="media">
+  <image class="media__img" src="{{imgUrl}}">
+  </image>
+  <text class="media__name">{{caption}}</text>
 </view>
