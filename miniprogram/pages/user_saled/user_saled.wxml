@@ -1,2 +1,7 @@
-<!--pages/user_saled/user_saled.wxml-->
-<text>pages/user_saled/user_saled.wxml</text>
+<back-nav title="我售出的">
+</back-nav>
+<product-list 
+products= "{{products}}"
+id="product-list"
+bind:deleteevent="delete"
+></product-list>

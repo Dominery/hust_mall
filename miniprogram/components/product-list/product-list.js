@@ -16,7 +16,8 @@ Component({
   data: {
     chooseIds:[],
     atManage: false,
-    allSelect: false
+    allSelect: false,
+    emptyInfo: '难以置信，这里空空如也'
   },
 
   /**

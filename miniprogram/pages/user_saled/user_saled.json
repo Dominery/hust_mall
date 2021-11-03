@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "back-nav":"../../components/back-nav/back-nav",
+    "product-list":"../../components/product-list/product-list"
+  }
 }

@@ -50,7 +50,7 @@ App({
         traceUser: true,
       })
     }
-    // this.globalData = {}
+    this.globalData = {}
     // const {User} = require('./js/controller/index')
     // getGloablData(User)
     //   .then(data => {

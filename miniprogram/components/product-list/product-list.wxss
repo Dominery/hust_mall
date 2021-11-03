@@ -44,3 +44,8 @@
   color: var(--hightlight);
   border-radius: 20rpx;
 }
+
+.empty-info {
+  text-align: center;
+  font-size: 1.2rem;
+}

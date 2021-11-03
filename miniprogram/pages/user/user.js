@@ -29,7 +29,7 @@ Page({
     wx.navigateTo({
       url: '../user_saled/user_saled',
     }).then(res=>{
-      res.eventChannel.emit('productInfo',this.data.saled)
+      res.eventChannel.emit('productList',this.data.saled)
     })
   },
 
