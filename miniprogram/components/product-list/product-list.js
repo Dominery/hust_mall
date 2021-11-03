@@ -1,3 +1,4 @@
+const { route } = require('../../js/utils/route')
 // components/product-list/product-list.js
 Component({
   /**
@@ -51,6 +52,11 @@ Component({
           allSelect: true
         })
       }
+    },
+    productTabHandler(e){
+      const { id } = e.target
+      const product = this.data.products.find(item=>item._id===id)
+      route('../../pages/product/product','productInfo',product)
     },
     deleteEventTrigger(){
       const { chooseIds } = this.data

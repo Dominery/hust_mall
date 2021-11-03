@@ -1,5 +1,6 @@
 
-const { Product } = require('../../js/controller/index')
+const { Product,Collection } = require('../../js/controller/index')
+const { route } = require('../../js/utils/route')
 const appInstance = getApp()
 
 // pages/user/user.js
@@ -12,25 +13,20 @@ Page({
     registered: false,
     publish: [],
     saled: [],
-    collect: 0,
+    collect: [],
     userInfo: {
       avatarUrl: "../../images/home.png",
       nickName: "游客"
     }
   },
   userPublishRoute(){
-    wx.navigateTo({
-      url: '../user_publish/user_publish',
-    }).then(res=>{
-      res.eventChannel.emit('productList',this.data.publish)
-    })
+    route('../user_publish/user_publish','productList',this.data.publish)
   },
   userSaledRoute(){
-    wx.navigateTo({
-      url: '../user_saled/user_saled',
-    }).then(res=>{
-      res.eventChannel.emit('productList',this.data.saled)
-    })
+    route('../user_saled/user_saled','productList',this.data.saled)
+  },
+  userCollectRoute(){
+    route('../user_collect/user_collect','productList',this.data.collect)
   },
 
   /**
@@ -48,14 +44,7 @@ Page({
       userInfo
     })
 
-    Product.getUserProduct(userInfo._openid)
-      .then(data=>{
-        const group = groupBy(data,item=>item.saled)
-        this.setData({
-          saled: group.get(true),
-          publish: group.get(false)
-        })
-      })
+    
   },
 
   /**
@@ -69,7 +58,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(!this.data.registered){
+      return
+    }
 
+    const { userInfo } = this.data
+    Product.getUserProduct(userInfo._openid)
+      .then(data=>{
+        const group = groupBy(data,item=>item.saled)
+        this.setData({
+          saled: group.get(true),
+          publish: group.get(false)
+        })
+      })
+
+    Collection.getFollowed(userInfo._openid)
+      .then(collect=>{
+        const productIds = collect.map(item=>item.productid)
+        return Product.getProducts(productIds)
+      }).then(products=>{
+        this.setData({
+          collect: products
+        })
+      })
   },
 
   /**

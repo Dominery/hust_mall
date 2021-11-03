@@ -1,5 +1,6 @@
 const db = wx.cloud.database()
 const Product = db.collection('product')
+const _ = db.command
 
 
 function uploadImg(imgLocalPaths) {
@@ -64,6 +65,12 @@ function deleteProduts(ids) {
   }).then(res=>res.result.data)
 }
 
+function getProducts(ids) {
+  return Product.where({
+    _id:_.in(ids)
+  }).get().then(res=>res.data)
+}
+
 module.exports = {
-  create,getList, markSaled, getUserProduct,deleteProduts
+  create,getList, markSaled, getUserProduct,deleteProduts, getProducts
 }

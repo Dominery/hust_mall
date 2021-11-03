@@ -1,5 +1,6 @@
-const { Product } = require('../../js/controller/index')
-// pages/user_publish/user_publish.js
+const { Collection } = require('../../js/controller/index')
+const appInstance = getApp()
+// pages/user_collect/user_collect.js
 Page({
 
   /**
@@ -20,26 +21,26 @@ Page({
   },
   delete(e){
     const { chooseIds } = e.detail
-    wx.showModal({
-      cancelColor: '#aaa',
-      confirmColor:"#1FA4FC",
-      content: "真的要删除吗？如果删除，商品信息将丢失。"
-    }).then(res=>{
-      if(res.confirm){
-        return Product.deleteProduts(chooseIds)
-      }else {
-        return Promise.reject('已取消')
-      }
-    }).then(res=>{
-      const products = this.data.products.filter(item=>!chooseIds.includes(item._id))
+    const { _openid } = appInstance.globalData.userInfo 
+    Collection.unFollowProducts(_openid,chooseIds)
+      .then(res=>{
+        const products = this.data.products.filter(item=>!chooseIds.includes(item._id))
         this.setData({
           products
         })
-    }).catch(err=>{
-      console.log(err)
-    })
+        wx.showToast({
+          title: '取消关注成功',
+          icon: 'success',
+          duration: 1000
+        })
+      }).catch(res=>{
+        wx.showToast({
+          title: '操作失败',
+          icon: 'error',
+          duration: 1000
+        })
+      })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

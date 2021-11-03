@@ -51,14 +51,14 @@ App({
       })
     }
     this.globalData = {}
-    // const {User} = require('./js/controller/index')
-    // getGloablData(User)
-    //   .then(data => {
-    //     this.globalData = data;
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
+    const {User} = require('./js/controller/index')
+    getGloablData(User)
+      .then(data => {
+        this.globalData = data;
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
 
   }

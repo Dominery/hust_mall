@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/user/user",
     "pages/user_saled/user_saled",
     "pages/user_publish/user_publish",
-    "pages/user/user",
+    "pages/user_collect/user_collect",
     "pages/product/product",
     "pages/publish/publish",
     "pages/clause/clause"

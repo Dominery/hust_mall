@@ -28,6 +28,8 @@
       ></icon>
       <product-card 
       class="product-card"
+      id="{{item._id}}"
+      bindtap="productTabHandler"
       product="{{item}}"></product-card>
     </view>
   </view>

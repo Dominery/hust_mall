@@ -27,8 +27,10 @@ wx:if="{{registered}}"
           <text class="user__transnum">{{saled.length}}</text>
           <text class="user__transdesc">我卖出的</text>
         </view>
-        <view class="user__transItem">
-          <text class="user__transnum">{{collect}}</text>
+        <view class="user__transItem"
+        bindtap="userCollectRoute"
+        >
+          <text class="user__transnum">{{collect.length}}</text>
           <text class="user__transdesc">我收藏的</text>
         </view>
       </view>
