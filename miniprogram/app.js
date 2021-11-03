@@ -10,13 +10,13 @@ async function getOpenid() {
   })
 }
 
-async function judgeAuthorize() {
-  return wx.getSetting({
-    withSubscriptions: true
-  }).then(res => {
-    return Boolean(res.authSetting['scope.address.userinfo']);
-  })
-}
+// async function judgeAuthorize() {
+//   return wx.getSetting({
+//     withSubscriptions: true
+//   }).then(res => {
+//     return Boolean(res.authSetting['scope.address.userinfo']);
+//   })
+// }
 
 
 async function getGloablData(User){
