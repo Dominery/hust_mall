@@ -1,2 +1,50 @@
-<!--pages/user_publish/user_publish.wxml-->
-<text>pages/user_publish/user_publish.wxml</text>
+<wxs module="select">
+  var getType = function(ids,curId){
+    return ids.indexOf(curId)!==-1?'success':'circle';
+  }
+  module.exports.getType = getType;
+</wxs>
+
+<back-nav title="我的发布">
+  <text class="manage"
+  bindtap="manageTap"
+  >{{ atManage?'完成':'管理'}}</text>
+</back-nav>
+<view class="page">
+  <view class="page-wrapper">
+    <view 
+    class="product-container"
+    wx:for="{{products}}"
+    wx:key="_id"
+    >
+      <icon
+      wx:if="{{atManage}}"
+      id="{{item._id}}"
+      type="{{select.getType(chooseIds,item._id)}}"
+      size="23"
+      class="select-icon"
+      bindtap="selectTap"
+      ></icon>
+      <product-card 
+      class="product-card"
+      product="{{item}}"></product-card>
+    </view>
+  </view>
+</view>
+<view 
+class="page-wrapper batch"
+wx:if="{{atManage}}"
+>
+  <view class="batch-select">
+    <icon
+    type="{{allSelect?'success':'circle'}}"
+    size="23"
+    class="select-icon"
+    bindtap="allSelectTap"
+    ></icon>
+    <text>全选</text>
+  </view>
+  <view class="select-operate">
+    删除
+  </view>
+</view>

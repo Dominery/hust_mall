@@ -1,1 +1,48 @@
 /* pages/user_publish/user_publish.wxss */
+
+.page {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100rpx;
+  bottom: 100rpx;
+}
+
+.page-wrapper {
+  padding: 10rpx 20rpx;
+}
+
+.product-container {
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.product-card {
+  flex: 1;
+}
+
+.select-icon {
+  margin-right: 20rpx;
+}
+
+.batch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.batch-select {
+  display: flex;
+  align-items: center;
+}
+
+.select-operate {
+  padding: 5rpx 20rpx;
+  border: 1rpx solid var(--hightlight);
+  color: var(--hightlight);
+  border-radius: 20rpx;
+}
