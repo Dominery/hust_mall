@@ -1,5 +1,5 @@
 
-const { Product,Collection } = require('../../js/controller/index')
+const { Product,Collection,User } = require('../../js/controller/index')
 const { route } = require('../../js/utils/route')
 const appInstance = getApp()
 
@@ -33,6 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(appInstance.globalData)
     this.setData({
       registered: appInstance.globalData.registered
     })
@@ -43,8 +44,29 @@ Page({
     this.setData({
       userInfo
     })
+  },
+  registerHandler(e){
+    const { userInfo } = e.detail
+    appInstance.globalData.registered = true
+    appInstance.globalData.userInfo = userInfo
 
     
+    User.register(userInfo)
+      .then(res=>{
+        this.onLoad()
+      }).then(res=>{
+        wx.showToast({
+          title: '登录成功',
+          icon: 'success',
+          duration: 1000
+        })
+      }).catch(res=>{
+        wx.showToast({
+          title: '失败',
+          icon: 'error',
+          duration: 1000
+        })
+      })
   },
 
   /**

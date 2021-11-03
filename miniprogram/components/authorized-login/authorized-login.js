@@ -31,18 +31,15 @@ Component({
         return
       }
       this.data._tapAllowed = false
+      wx.showLoading({
+        title: '加载中',
+      })
       wx.getUserProfile({
         desc: '获取你的昵称、头像、性别及地区'
       }).then(res => {
-        appInstance.globalData.userInfo = res.userInfo
-        return res.userInfo
-      }).then(User.register)
-      .then(res => {
-        appInstance.globalData.registered = true;
-        const pages = getCurrentPages();
-        if(pages.length >0){
-          pages[pages.length-1].onLoad()
-        }
+        wx.hideLoading()
+        const { userInfo } = res
+        this.triggerEvent('register',{ userInfo })
       }).catch(err => {
         console.log(err)
       }).finally(()=>{

@@ -13,6 +13,7 @@
   width: 220rpx;
   height: auto;
   min-height: 180rpx;
+  max-height: 500rpx;
 }
 .product-card__img--col{
   width: 100%;
@@ -51,18 +52,16 @@
   font-size: 0.6em;
 }
 
-.product-card__bargin, .product-card__saled {
+.product-card__slogan{
   display: inline-block;
   padding: 5rpx 10rpx;
   border-radius: 5rpx;
   font-size: .6em;
   color: #fff;
-}
-.product-card__bargin{
   background-color: var(--dark-hightlight);
 }
 
-.product-card__saled {
+.product-card__slogan--gray {
   background-color: var(--light-gray);
 }
 

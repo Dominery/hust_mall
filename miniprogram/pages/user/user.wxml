@@ -40,4 +40,5 @@ wx:if="{{registered}}"
 
 <authorized-login
 wx:if="{{!registered}}"
+bind:register="registerHandler"
 ></authorized-login>

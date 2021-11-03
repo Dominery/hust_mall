@@ -11,11 +11,12 @@
 }
 .product-title {
   padding: 40rpx 0;
-  font-size: 35rpx;
+  font-size: 1.3rem;
 }
 .product-content{
   width: auto;
   height: 200rpx;
+  font-size: 1.1rem;
 }
 .product-col {
   padding: 40rpx 0;

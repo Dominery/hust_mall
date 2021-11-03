@@ -27,7 +27,7 @@ async function getGloablData(User){
   const userInfo = await User.getInfo(openid);
   globalData.registered = Boolean(userInfo);
   if(!userInfo){
-    return
+    return globalData
   }
   globalData.userInfo = userInfo;
   wx.setStorage({

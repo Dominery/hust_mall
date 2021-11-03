@@ -6,6 +6,8 @@ const { create } = require('../../js/controller/product')
 
 const { categories } = require('../../js/data')
 
+const { route } = require('../../js/utils/route')
+
 Page({
 
   /**
@@ -48,9 +50,9 @@ Page({
     }
   },
   publishSumbmit(e){
-    const formData = e.detail.valut
+    const formData = e.detail.value
     const category = categories.find(item=>item.value===formData.category)
-    this.dataValidate({...formData,category})
+    this.dataValidate({...formData,category:category.id})
     .then(data =>{
       wx.showLoading({
         title: '上传中',
@@ -66,15 +68,16 @@ Page({
       })
     })
     const that = this;
-    function successSubmit() {
-      // that.clearInput()
-      wx.hideLoading()
-        .then(()=>{
+    function successSubmit(data) {
+      that.clearInput()
+      return wx.hideLoading().then(()=>{
           wx.showToast({
             title: '成功上传',
             icon: "success",
             duration: 2000
           })
+        }).then(()=>{
+          route('../product/product','productInfo',data)
         })
     }
 
@@ -86,6 +89,8 @@ Page({
     }catch(message){
       return Promise.reject(message)
     }
+
+    data.getMethod = Number(data.getMethod)
     
     return strEmptyCheck(encodeOldPrice(data))
       .catch(key=>{

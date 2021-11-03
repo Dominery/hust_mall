@@ -10,10 +10,14 @@
     <view class="product-card__priceInfo">
       <text class="product-card__price"><text class="product-card__priceIcon">￥</text>{{product.price}}</text>
       <text 
-      class="product-card__bargin"
+      class="product-card__slogan"
+      wx:if="{{product.abrase>9}}"
+      >{{abraseStr}}成新</text>
+      <text 
+      class="product-card__slogan"
       wx:if="{{product.bargain}}"
       >可刀</text>
-      <text class="product-card__saled"
+      <text class="product-card__slogan .product-card__slogan--gray"
       wx:if="{{product.saled}}"
       >已售</text>
     </view>

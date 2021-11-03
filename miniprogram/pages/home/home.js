@@ -44,7 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._setProductList(this.data.currentTab)
+    
   },
 
   /**
@@ -57,7 +57,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._setProductList(this.data.currentTab)
   },
 
   /**

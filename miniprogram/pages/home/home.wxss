@@ -45,11 +45,13 @@
 
 .product-list {
   display: flex;
-  flex-wrap: wrap;
+}
+.column {
+  width: 50%;
 }
 
 .product-container {
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
   padding: 10rpx 10rpx;
 }

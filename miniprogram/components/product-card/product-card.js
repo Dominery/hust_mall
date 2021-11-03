@@ -1,3 +1,4 @@
+const { transformNumToStr } = require('../../js/utils/transform')
 // components/product-card/product-card.js
 Component({
   /**
@@ -18,7 +19,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    imgUrl: '../../images/loading.gif'
+    imgUrl: '../../images/loading.gif',
+    abraseStr: ''
   },
 
   /**
@@ -29,8 +31,11 @@ Component({
   },
   lifetimes: {
     ready(){
+      const { product } = this.data
+      const abraseStr = transformNumToStr(product.abrase)
       this.setData({
-        imgUrl: this.data.product.imgUrls[0]
+        imgUrl: product.imgUrls[0],
+        abraseStr
       })
     }
   }

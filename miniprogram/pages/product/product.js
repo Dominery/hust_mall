@@ -1,9 +1,5 @@
 // pages/product/product.js
-function transformNumToStr(num) {
-  if(num<0 || num>9) return ''
-  const template = '零一二三四五六七八九'
-  return template[num]
-}
+const { transformNumToStr } = require('../../js/utils/transform')
 Page({
 
   /**

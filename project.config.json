@@ -38,7 +38,7 @@
   },
   "appid": "wx314de99453d58ee1",
   "projectname": "hust_mall",
-  "libVersion": "2.20.0",
+  "libVersion": "2.20.1",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {

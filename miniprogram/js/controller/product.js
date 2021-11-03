@@ -12,14 +12,13 @@ function uploadImg(imgLocalPaths) {
 }
 
 async function create(data){
-  console.log(data)
   const time = db.serverDate()
   try{
     const imgUrls = await uploadImg(data.imgUrls)
-    console.log(imgUrls)
+    const submitData = {...data,imgUrls,createdTime:time,saled:false}
     return await Product.add({
-      data:{...data,imgUrls,createdTime:time}
-    })
+      data:submitData
+    }).then(()=>submitData)
   }catch(err){
     console.log(err)
     return Promise.reject('上传失败')

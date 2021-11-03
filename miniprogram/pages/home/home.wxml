@@ -48,17 +48,35 @@
   </view>
 </scroll-view>
   <view class="product-list">
-    <view 
-    class="product-container"
-    wx:for="{{products}}"
-    wx:key = "_id"
-    >
-      <product-card 
-      col="{{true}}"
-      product="{{item}}"
-      id="{{item._id}}"
-      bindtap="productTabHandler"
-      ></product-card>
-    </view>
+      <view class="column">
+        <view 
+        class="product-container"
+        wx:for="{{products}}"
+        wx:key = "_id"
+        wx:if="{{index%2===0}}"
+        >
+          <product-card 
+          col="{{true}}"
+          product="{{item}}"
+          id="{{item._id}}"
+          bindtap="productTabHandler"
+          ></product-card>
+        </view>
+      </view>
+      <view class="column">
+        <view 
+        class="product-container"
+        wx:for="{{products}}"
+        wx:key = "_id"
+        wx:if="{{index%2}}"
+        >
+          <product-card 
+          col="{{true}}"
+          product="{{item}}"
+          id="{{item._id}}"
+          bindtap="productTabHandler"
+          ></product-card>
+        </view>
+      </view>
   </view>
 </view>
