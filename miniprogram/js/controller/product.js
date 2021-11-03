@@ -55,6 +55,15 @@ function getUserProduct(_openid) {
   }).get().then(res=>res.data)
 }
 
+function deleteProduts(ids) {
+  return wx.cloud.callFunction({
+    name: 'deleteProducts',
+    data: {
+      ids
+    }
+  }).then(res=>res.result.data)
+}
+
 module.exports = {
-  create,getList, markSaled, getUserProduct
+  create,getList, markSaled, getUserProduct,deleteProduts
 }

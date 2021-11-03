@@ -1,3 +1,4 @@
+const { Product } = require('../../js/controller/index')
 // pages/user_publish/user_publish.js
 Page({
 
@@ -22,43 +23,30 @@ Page({
       "title":"笑傲江湖风波曲",
       "saled":false}
   ],
-  chooseIds:[],
   atManage: false,
-  allSelect: false
-  },
-  selectTap(e){
-    const { id } = e.target
-    const { chooseIds } = this.data
-    const index = chooseIds.indexOf(id)
-    if(index===-1){
-      chooseIds.push(id)
-    }else{
-      chooseIds.splice(index,1)
-    }
-    this.setData({
-      chooseIds
-    })
+  _product_list:{}
   },
   manageTap(){
     const { atManage } = this.data
     this.setData({
       atManage: !atManage
     })
+    const { _product_list } = this.data
+    _product_list.changeState()
   },
-  allSelectTap(){
-    const { allSelect } = this.data
-    if(allSelect){
-      this.setData({
-        chooseIds: [],
-        allSelect: false
-      })
-    }else {
-      const chooseIds = this.data.products.map(item=>item._id)
-      this.setData({
-        chooseIds,
-        allSelect: true
-      })
-    }
+  delete(e){
+    const { chooseIds } = e.detail
+    wx.showModal({
+      cancelColor: '#aaa',
+      confirmColor:"#1FA4FC",
+      content: "真的要删除吗？如果删除，商品信息将丢失。"
+    }).then(res=>{
+      if(res.confirm){
+        return Product.deleteProduts(chooseIds)
+      }
+    }).catch(err=>{
+      console.log(err)
+    })
   },
 
   /**
@@ -72,7 +60,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    const _product_list = this.selectComponent('#product-list');
+    this.setData({
+      _product_list
+    })
   },
 
   /**

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "back-nav":"../../components/back-nav/back-nav",
-    "product-card":"../../components/product-card/product-card"
+    "product-list":"../../components/product-list/product-list"
   }
 }
