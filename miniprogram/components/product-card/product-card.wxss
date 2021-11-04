@@ -5,6 +5,7 @@
   border-radius: 10rpx;
   background-color: #fff;
   overflow: hidden;
+  font-size: 1rem;
 }
 .product-card--col {
   flex-direction: column;
@@ -45,18 +46,18 @@
 
 .product-card__price {
   color: var(--hightlight);
-  font-size: 1.5em;
+  font-size: 1.2rem;
 }
 
 .product-card__priceIcon {
-  font-size: 0.6em;
+  font-size: 0.6rem;
 }
 
 .product-card__slogan{
   display: inline-block;
   padding: 5rpx 10rpx;
   border-radius: 5rpx;
-  font-size: .6em;
+  font-size: .6rem;
   color: #fff;
   background-color: var(--dark-hightlight);
 }

@@ -26,7 +26,13 @@ Page({
       content: "真的要删除吗？如果删除，商品信息将丢失。"
     }).then(res=>{
       if(res.confirm){
-        return Product.deleteProduts(chooseIds)
+        wx.showLoading({
+          title: '正在删除',
+        })
+        const imgUrls = this.data.products
+          .filter(item=>chooseIds.includes(item._id))
+          .flatMap(item=>item.imgUrls)
+        return Product.deleteProduts(chooseIds,imgUrls)
       }else {
         return Promise.reject('已取消')
       }
@@ -37,6 +43,8 @@ Page({
         })
     }).catch(err=>{
       console.log(err)
+    }).finally(()=>{
+      wx.hideLoading()
     })
   },
 

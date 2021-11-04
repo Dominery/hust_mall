@@ -34,8 +34,9 @@ Component({
       }else{
         chooseIds.splice(index,1)
       }
+      
       this.setData({
-        chooseIds
+        chooseIds, allSelect:chooseIds.length === this.data.products.length
       })
     },
     allSelectTap(){
