@@ -1,4 +1,4 @@
-const { route } = require('../../js/utils/route')
+const { Route } = require('../../js/utils/index')
 // components/product-list/product-list.js
 Component({
   /**
@@ -57,7 +57,7 @@ Component({
     productTabHandler(e){
       const { id } = e.target
       const product = this.data.products.find(item=>item._id===id)
-      route('../../pages/product/product','productInfo',product)
+      Route.push('../../pages/product/product','productInfo',product)
     },
     deleteEventTrigger(){
       const { chooseIds } = this.data

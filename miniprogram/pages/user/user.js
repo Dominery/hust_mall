@@ -1,7 +1,6 @@
 
-const { Product,Collection,User } = require('../../js/controller/index')
-const { route } = require('../../js/utils/route')
-const appInstance = getApp()
+const { Product,Collection } = require('../../js/controller/index')
+const { Route, AuthorizeLogin, groupBy, Storage } = require('../../js/utils/index')
 
 // pages/user/user.js
 Page({
@@ -20,53 +19,28 @@ Page({
     }
   },
   userPublishRoute(){
-    route('../user_publish/user_publish','productList',this.data.publish)
+    Route.push('../user_publish/user_publish','productList',this.data.publish)
   },
   userSaledRoute(){
-    route('../user_saled/user_saled','productList',this.data.saled)
+    Route.push('../user_saled/user_saled','productList',this.data.saled)
   },
   userCollectRoute(){
-    route('../user_collect/user_collect','productList',this.data.collect)
+    Route.push('../user_collect/user_collect','productList',this.data.collect)
+  },
+  registerHandler(e){
+    new AuthorizeLogin()
+        .run(userInfo=>{
+          Storage.set('registered',true)
+          Storage.set('userInfo',userInfo)
+          this.onShow()
+        })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(appInstance.globalData)
-    this.setData({
-      registered: appInstance.globalData.registered
-    })
-    if(!this.data.registered){
-      return
-    }
-    const {userInfo} = appInstance.globalData;
-    this.setData({
-      userInfo
-    })
-  },
-  registerHandler(e){
-    const { userInfo } = e.detail
-    appInstance.globalData.registered = true
-    appInstance.globalData.userInfo = userInfo
-
-    
-    User.register(userInfo)
-      .then(res=>{
-        this.onLoad()
-      }).then(res=>{
-        wx.showToast({
-          title: '登录成功',
-          icon: 'success',
-          duration: 1000
-        })
-      }).catch(res=>{
-        wx.showToast({
-          title: '失败',
-          icon: 'error',
-          duration: 1000
-        })
-      })
+   
   },
 
   /**
@@ -80,11 +54,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      registered: Storage.get('registered')
+    })
     if(!this.data.registered){
       return
     }
+    const userInfo = Storage.get('userInfo')
+    this.setData({
+      userInfo
+    })
 
-    const { userInfo } = this.data
     Product.getUserProduct(userInfo._openid)
       .then(data=>{
         const group = groupBy(data,item=>item.saled)
@@ -142,15 +122,3 @@ Page({
 })
 
 
-function groupBy(data,mapFunc) {
-  const result = new Map()
-  data.forEach(value=>{
-    const key = mapFunc(value)
-    if(result.has(key)){
-      result.get(key).push(value)
-    }else {
-      result.set(key,[value])
-    }
-  })
-  return result
-}

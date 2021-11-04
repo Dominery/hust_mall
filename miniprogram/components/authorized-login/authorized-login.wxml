@@ -1,11 +1,22 @@
 <!--components/login/login.wxml-->
-<view class="mask">
-</view>
-<view class="authorized-box">
-  <text>为更好提供服务，需要您微信授权</text>
-  <button
-  class="authorized-box__button"
-  bindtap="authorizedLogin"
+<block wx:if="{{show}}">
+  <view class="mask"
+  bindtap="cancel"
   >
-  授权登录</button>
-</view>
+  </view>
+  <view class="authorized-box">
+    <text>为更好提供服务，需要您微信授权</text>
+    <view class="authorized-box__buttons">
+      <button
+      class="authorized-box__button authorized-box__button--cancel"
+      bindtap="cancel"
+      >
+      取消</button>
+      <button
+      class="authorized-box__button authorized-box__button--confirm"
+      bindtap="authorizedLogin"
+      >
+      授权登录</button>
+    </view>
+  </view>
+</block>

@@ -119,3 +119,8 @@
   wx:if="{{showCategorySelect}}"
   ></category-select>
 </view>
+
+<authorized-login
+wx:if="{{!registered}}"
+bind:register="registerHandler"
+></authorized-login>

@@ -11,8 +11,11 @@ Page({
     currentTab:'recommend',
     products:[]
   },
-  scrollNav(e){
-    // console.log(e)
+  searchHandler(e){
+    wx.showToast({
+      title: '没有相关商品',
+      icon: 'error'
+    })
   },
   navTapHandler(e){
     const currentTab = e.target.id
@@ -32,7 +35,7 @@ Page({
     })
   },
   _setProductList(tab){
-    Product.getList(tab)
+    return Product.getList(tab)
     .then(products=>{
       this.setData({
         products
@@ -44,7 +47,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this._setProductList(this.data.currentTab)
   },
 
   /**
@@ -57,7 +60,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this._setProductList(this.data.currentTab)
+    
   },
 
   /**
@@ -78,7 +81,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showLoading({
+      title: '加载中',
+    })
+    this._setProductList(this.data.currentTab).then(()=>{
+      wx.stopPullDownRefresh()
+    }).finally(()=>{
+      wx.hideLoading()
+    })
   },
 
   /**

@@ -11,6 +11,7 @@
   padding: 0 20rpx;
 }
 .home-headbac {
+  padding-top: 20rpx;
   height: 240rpx;
   margin-bottom: -240rpx;
   background-color: var(--dark-blue);

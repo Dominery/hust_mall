@@ -1,12 +1,13 @@
 // pages/publish/publish.js
 
-const { validator,strEmptyCheck, strMoreThan, numStr, strToNum } = require('../../js/utils/validator')
 
-const { create } = require('../../js/controller/product')
+const { Product } = require('../../js/controller/index')
 
 const { categories } = require('../../js/data')
 
-const { route } = require('../../js/utils/route')
+const { Route, AuthorizeLogin, Validator, Storage } = require('../../js/utils/index')
+
+const { validator,strEmptyCheck, strMoreThan, numStr, strToNum } = Validator
 
 Page({
 
@@ -14,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    registered:false,
     categories:categories.map(category=>category.value),
     showCategorySelect:false,
     category:"",
@@ -52,12 +54,12 @@ Page({
   publishSumbmit(e){
     const formData = e.detail.value
     const category = categories.find(item=>item.value===formData.category)
-    this.dataValidate({...formData,category:category.id})
+    this.dataValidate({...formData,category:category?.id})
     .then(data =>{
       wx.showLoading({
         title: '上传中',
       })
-      return create(data)
+      return Product.create(data)
     })
     .then(successSubmit)
     .catch(message => {
@@ -77,12 +79,13 @@ Page({
             duration: 2000
           })
         }).then(()=>{
-          route('../product/product','productInfo',data)
+          Route.push('../product/product','productInfo',data)
         })
     }
 
   },
   async dataValidate(rawData){
+    if(!Storage.get('registered')) return Promise.reject('请登录')
     let data;
     try{
       data = await clauseChecked(rawData,"请勾选条款")
@@ -124,6 +127,14 @@ Page({
       showCategorySelect:true
     })
   },
+  registerHandler(e){
+    new AuthorizeLogin()
+        .run(userInfo=>{
+          Storage.set('registered',true)
+          Storage.set('userInfo',userInfo)
+          this.onShow()
+        })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -143,6 +154,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const  registered  = Storage.get('registered')
+    if(!registered) return
+    this.setData({
+      registered
+    })
 
   },
 

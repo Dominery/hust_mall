@@ -1,5 +1,5 @@
 const { Collection, Product } = require('../../js/controller/index')
-const appInstance = getApp()
+const { Storage } = require('../../js/utils/index')
 // components/product-bar/product-bar.js
 Component({
   /**
@@ -35,7 +35,7 @@ Component({
           showCancel:false,
           confirmColor:"#1FA4FC",
           title: "复制成功",
-          content: "本平台仅提供联系方式，钱货须当面交接"
+          content: "本平台仅提供联系方式，钱货须当面交接，谨防受骗"
         })
       })
     },
@@ -106,7 +106,7 @@ Component({
   },
   lifetimes: {
     ready(){
-      const openid = appInstance?.globalData?.userInfo?._openid || ''
+      const openid = Storage.get('userInfo')?._openid || ''
       this.setData({
         openid
       })

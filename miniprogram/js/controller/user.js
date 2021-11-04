@@ -5,7 +5,7 @@ const User = db.collection('user')
 async function register(data) {
   return User.add({
     data
-  })
+  }).then(res=>data)
 }
 async function getInfo(_openid) {
   return User.where({

@@ -1,7 +1,9 @@
 <view class="home-page">
 <view class="home-headbac"></view>
   <view class="page-wrapper">
-    <search-box></search-box>
+    <search-box
+    bind:searchevent="searchHandler"
+    ></search-box>
     <swiper
     indicator-dots
     indicator-color="#aaa"

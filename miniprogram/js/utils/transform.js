@@ -4,6 +4,19 @@ function transformNumToStr(num) {
   return template[num]
 }
 
+function groupBy(data,mapFunc) {
+  const result = new Map()
+  data.forEach(value=>{
+    const key = mapFunc(value)
+    if(result.has(key)){
+      result.get(key).push(value)
+    }else {
+      result.set(key,[value])
+    }
+  })
+  return result
+}
+
 module.exports = {
-  transformNumToStr
+  transformNumToStr, groupBy
 }

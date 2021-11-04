@@ -10,7 +10,8 @@
   min-width: 40rpx;
   border: 1px solid var(--light-gray);
   border-radius: 10rpx;
-  /* box-shadow: 0rpx 2rpx 2rpx var(--light-mask); */
+  box-shadow: 0rpx 2rpx 6rpx var(--light-mask);
+  overflow: hidden;
 }
 
 .number-select__num {

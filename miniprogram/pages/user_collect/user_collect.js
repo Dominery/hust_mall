@@ -1,5 +1,5 @@
 const { Collection } = require('../../js/controller/index')
-const appInstance = getApp()
+const { Storage } = require('../../js/utils/index')
 // pages/user_collect/user_collect.js
 Page({
 
@@ -21,7 +21,7 @@ Page({
   },
   delete(e){
     const { chooseIds } = e.detail
-    const { _openid } = appInstance.globalData.userInfo 
+    const { _openid } = Storage.get('userInfo')
     Collection.unFollowProducts(_openid,chooseIds)
       .then(res=>{
         const products = this.data.products.filter(item=>!chooseIds.includes(item._id))

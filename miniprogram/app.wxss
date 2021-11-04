@@ -24,8 +24,8 @@ page{
   --hightlight:#fc5531;
   --dark-hightlight:#ff455b;
   --suceess:#09bb07;
-  color:#262628;
-  font-family: PingFangSC-Regular;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#333;
 }
 
 .stretchy-wrapper{

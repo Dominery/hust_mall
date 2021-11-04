@@ -3,6 +3,7 @@
     "add-photo":"../../components/add-photo/add-photo",
     "number-select":"../../components/number-select/number-select",
     "category-select":"../../components/category-select/category-select",
-    "clause-check":"../../components/clause-check/clause-check"
+    "clause-check":"../../components/clause-check/clause-check",
+    "authorized-login":"../../components/authorized-login/authorized-login"
   }
 }

@@ -61,6 +61,8 @@ Component({
       })
     },
     submit(e){
+      const { inputValue } = this.data
+      if(!inputValue) return
       this.triggerEvent('searchevent',{
         keyword: this.data.inputValue
       })

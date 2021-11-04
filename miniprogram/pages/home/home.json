@@ -3,5 +3,7 @@
   "usingComponents": {
     "search-box":"../../components/search-box/search-box",
     "product-card":"../../components/product-card/product-card"
-  }
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

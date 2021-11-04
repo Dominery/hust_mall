@@ -1,4 +1,4 @@
-function route(url,event,data) {
+function push(url,event,data) {
   wx.navigateTo({
     url,
   }).then(res=>{
@@ -8,5 +8,5 @@ function route(url,event,data) {
 
 
 module.exports = {
-  route
+  push
 }
