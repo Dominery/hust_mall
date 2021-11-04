@@ -7,16 +7,6 @@ Page({
    */
   data: {
     products: [],
-    atManage: false,
-    _product_list:{}
-  },
-  manageTap(){
-    const { atManage } = this.data
-    this.setData({
-      atManage: !atManage
-    })
-    const { _product_list } = this.data
-    _product_list.changeState()
   },
   delete(e){
     const { chooseIds } = e.detail
@@ -64,10 +54,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    const _product_list = this.selectComponent('#product-list');
-    this.setData({
-      _product_list
-    })
   },
 
   /**

@@ -6,13 +6,26 @@
 </wxs>
 
 <view class="page">
-  <view class="page-wrapper">
     <view
     wx:if="{{!products[0]}}"
     class="empty-info"
     >
       {{emptyInfo}}
     </view>
+    <block
+    wx:else
+    >
+    <view
+    class="product-list__head"
+    wx:if="{{showManage}}"
+    >
+    <text 
+      class="product-list__head__item"
+      bindtap="changeState"
+      >{{ atManage?'完成':'管理'}}</text>
+    </view>
+    </block>
+  <view class="page-wrapper">
     <view 
     class="product-container"
     wx:for="{{products}}"

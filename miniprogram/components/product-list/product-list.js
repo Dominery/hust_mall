@@ -8,6 +8,10 @@ Component({
     products: {
       type:Array,
       value: []
+    },
+    showManage: {
+      type: Boolean,
+      value: true
     }
   },
 
@@ -18,7 +22,7 @@ Component({
     chooseIds:[],
     atManage: false,
     allSelect: false,
-    emptyInfo: '难以置信，这里空空如也'
+    emptyInfo: '不用找了，这里没有东西吶'
   },
 
   /**
@@ -66,7 +70,9 @@ Component({
     changeState(){
       const { atManage } = this.data
       this.setData({
-        atManage: !atManage
+        atManage: !atManage,
+        chooseIds: [],
+        allSelect: false
       })
     }
   }

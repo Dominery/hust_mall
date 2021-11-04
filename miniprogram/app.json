@@ -10,8 +10,8 @@
     "pages/clause/clause"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#FFF",
-    "enablePullDownRefresh": true
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {

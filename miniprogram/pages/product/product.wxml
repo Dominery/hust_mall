@@ -1,4 +1,3 @@
-<back-nav></back-nav>
 <view class="product-page">
   <view class="product-wrapper white">
     <text class="product-title">{{product.title}}</text>

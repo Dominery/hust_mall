@@ -1,5 +1,5 @@
 const { Collection } = require('../../js/controller/index')
-const { Storage } = require('../../js/utils/index')
+const { Storage, Api } = require('../../js/utils/index')
 // pages/user_collect/user_collect.js
 Page({
 
@@ -8,16 +8,6 @@ Page({
    */
   data: {
     products: [],
-    atManage: false,
-    _product_list:{}
-  },
-  manageTap(){
-    const { atManage } = this.data
-    this.setData({
-      atManage: !atManage
-    })
-    const { _product_list } = this.data
-    _product_list.changeState()
   },
   delete(e){
     const { chooseIds } = e.detail
@@ -28,17 +18,9 @@ Page({
         this.setData({
           products
         })
-        wx.showToast({
-          title: '取消关注成功',
-          icon: 'success',
-          duration: 1000
-        })
+        Api.successToast('取消关注成功')
       }).catch(res=>{
-        wx.showToast({
-          title: '操作失败',
-          icon: 'error',
-          duration: 1000
-        })
+        Api.errorToast('操作失败')
       })
   },
   /**
@@ -57,10 +39,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    const _product_list = this.selectComponent('#product-list');
-    this.setData({
-      _product_list
-    })
   },
 
   /**

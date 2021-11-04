@@ -1,8 +1,3 @@
-<back-nav title="我的发布">
-  <text class="manage"
-  bindtap="manageTap"
-  >{{ atManage?'完成':'管理'}}</text>
-</back-nav>
 <product-list 
 products= "{{products}}"
 id="product-list"
