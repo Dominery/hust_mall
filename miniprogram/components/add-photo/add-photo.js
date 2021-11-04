@@ -1,4 +1,5 @@
 const compressBehavior = require('../../behavior/compress')
+const { Api } = require('../../js/utils/index')
 // components/add-photo/add-photo.js
 Component({
   options: {
@@ -79,19 +80,16 @@ Component({
     deletePhoto: function (e) {
       const index = getIndex(e)
       if(index==-1)return;
-      wx.showModal({
-        cancelColor: '#E93B3B',
-        title:"Note",
-        content: "删除这张图片？"
-      }).then(res=>{
-        if(res.confirm){
+      Api.showModal('删除这张图片')
+        .then(res=>{
           const photos = this.data.photos
           photos.splice(index,1)
           this.setData({
             photos
           })
-        }
-      })
+        }).catch(res=>{
+          console.log(res)
+        })
     },
     touchPhoto: function (e) {
       const index = getIndex(e)

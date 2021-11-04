@@ -8,6 +8,6 @@ bindtap="clickCheck"
     ></view>
   </view>
   <view class="clause-check__info">
-    阅读并同意《<text class="clause-check__jump" catchtap="tapViewClause">相关条款</text>》
+    阅读并同意《<navigator class="clause-check__jump" url="/pages/clause/clause">相关条款</navigator>》
   </view>
 </view>

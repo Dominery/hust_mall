@@ -1,2 +1,6 @@
-<!--pages/clause/clause.wxml-->
-<text>pages/clause/clause.wxml</text>
+<view class="wrapper">
+<rich-text
+nodes="{{clause}}"
+>
+</rich-text>
+</view>

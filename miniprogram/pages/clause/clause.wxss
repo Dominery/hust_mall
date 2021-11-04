@@ -1,1 +1,18 @@
 /* pages/clause/clause.wxss */
+
+.wrapper {
+  padding: 0 30rpx 40rpx;
+}
+
+.clause {
+  line-height: 2;
+}
+
+.title {
+  line-height: 3;
+}
+
+.list {
+  text-indent: 1em;
+  margin-bottom: 20rpx;
+}

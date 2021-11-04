@@ -24,9 +24,6 @@ Component({
       this.setData({
         value:!value
       })
-    },
-    tapViewClause(e){
-      console.log(e)
     }
   }
 })

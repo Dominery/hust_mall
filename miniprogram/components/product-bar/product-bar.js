@@ -1,5 +1,5 @@
 const { Collection, Product } = require('../../js/controller/index')
-const { Storage } = require('../../js/utils/index')
+const { Storage, Api } = require('../../js/utils/index')
 // components/product-bar/product-bar.js
 Component({
   /**
@@ -31,12 +31,7 @@ Component({
       wx.setClipboardData({
         data: this.data.product.qq,
       }).then(res=>{
-        wx.showModal({
-          showCancel:false,
-          confirmColor:"#1FA4FC",
-          title: "复制成功",
-          content: "本平台仅提供联系方式，钱货须当面交接，谨防受骗"
-        })
+        Api.showModal('本平台仅提供联系方式，钱货须当面交接，谨防受骗','复制成功',showCancel=false)
       })
     },
     collectTapHandler(){
@@ -62,15 +57,12 @@ Component({
 
     },
     markSaled(){
-      wx.showModal({
-        cancelColor: '#aaa',
-        confirmColor:"#1FA4FC",
-        content: "如果确认售出，该商品将无法检索到"
-      }).then(res=>{
-        if(res.confirm){
+      Api.showModal('如果确认售出，该商品将无法检索到','请确认')
+        .then(()=>{
           this._saleProduct(this.data.product._id)
-        }
-      })
+        }).catch(err=>{
+          console.log(err)
+        })
     },
     _collectionChange(collected){
       if(collected){

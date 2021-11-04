@@ -65,7 +65,9 @@ Component({
     },
     deleteEventTrigger(){
       const { chooseIds } = this.data
+      if(chooseIds.length===0) return
       this.triggerEvent('deleteevent',{ chooseIds })
+      this.changeState()
     },
     changeState(){
       const { atManage } = this.data

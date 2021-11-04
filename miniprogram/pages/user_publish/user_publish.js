@@ -1,4 +1,5 @@
 const { Product } = require('../../js/controller/index')
+const { Api } = require('../../js/utils/index')
 // pages/user_publish/user_publish.js
 Page({
 
@@ -10,12 +11,8 @@ Page({
   },
   delete(e){
     const { chooseIds } = e.detail
-    wx.showModal({
-      cancelColor: '#aaa',
-      confirmColor:"#1FA4FC",
-      content: "真的要删除吗？如果删除，商品信息将丢失。"
-    }).then(res=>{
-      if(res.confirm){
+    Api.showModal('真的要删除吗？如果删除，商品信息将丢失。','警告')
+      .then(res=>{
         wx.showLoading({
           title: '正在删除',
         })
@@ -23,19 +20,16 @@ Page({
           .filter(item=>chooseIds.includes(item._id))
           .flatMap(item=>item.imgUrls)
         return Product.deleteProduts(chooseIds,imgUrls)
-      }else {
-        return Promise.reject('已取消')
-      }
-    }).then(res=>{
-      const products = this.data.products.filter(item=>!chooseIds.includes(item._id))
+      }).then(res=>{
+        const products = this.data.products.filter(item=>!chooseIds.includes(item._id))
         this.setData({
           products
         })
-    }).catch(err=>{
-      console.log(err)
-    }).finally(()=>{
-      wx.hideLoading()
-    })
+      }).catch(err=>{
+        console.log(err)
+      }).finally(()=>{
+        wx.hideLoading()
+      })
   },
 
   /**

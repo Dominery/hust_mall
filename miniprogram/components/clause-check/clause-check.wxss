@@ -27,4 +27,5 @@
 
 .clause-check__jump {
   color: var(--theme-color);
+  display: inline;
 }
