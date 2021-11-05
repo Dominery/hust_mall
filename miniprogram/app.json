@@ -28,7 +28,6 @@
       },
       {
         "pagePath": "pages/publish/publish",
-        "text": "发布",
         "iconPath": "images/publish.png",
         "selectedIconPath": "images/publish-active.png"
       },

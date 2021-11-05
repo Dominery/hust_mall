@@ -1,5 +1,8 @@
 <view class="media">
-  <image class="media__img" src="{{imgUrl}}">
+  <image 
+  class="media__img" 
+  mode="aspectFill"
+  src="{{imgUrl}}">
   </image>
   <text class="media__name">{{caption}}</text>
 </view>

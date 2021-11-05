@@ -1,7 +1,6 @@
 <view class="background-img"></view>
 <view
 class="wraper"
-wx:if="{{registered}}"
 >
   <view class="user">
     <view class="user__card">

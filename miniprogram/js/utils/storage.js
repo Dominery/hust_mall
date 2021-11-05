@@ -1,6 +1,7 @@
 const appInstance = getApp()
 
 function get(name) {
+  // console.log(appInstance?.globalData)
   return appInstance?.globalData?.[name]
 }
 

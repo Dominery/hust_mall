@@ -9,13 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    registered: false,
+    registered: true,
     publish: [],
     saled: [],
     collect: [],
     userInfo: {
-      avatarUrl: "../../images/home.png",
-      nickName: "游客"
+      avatarUrl: "../../images/default-user.png",
+      nickName: "-"
     }
   },
   userPublishRoute(){
@@ -54,10 +54,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      registered: Storage.get('registered')
-    })
-    if(!this.data.registered){
+    const registered = Storage.get('registered')
+    if(!registered){
+      this.setData({
+        registered
+      })
       return
     }
     const userInfo = Storage.get('userInfo')

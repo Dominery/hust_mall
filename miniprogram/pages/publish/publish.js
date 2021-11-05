@@ -15,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    registered:false,
+    registered:true,
     categories:categories.map(category=>category.value),
     showCategorySelect:false,
     category:"",
@@ -140,7 +140,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   this.setData({
+     showPage: Storage.get('isExamined')
+   })
   },
 
   /**
@@ -155,7 +157,7 @@ Page({
    */
   onShow: function () {
     const  registered  = Storage.get('registered')
-    if(!registered) return
+    if(registered) return
     this.setData({
       registered
     })

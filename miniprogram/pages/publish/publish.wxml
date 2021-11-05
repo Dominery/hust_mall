@@ -1,4 +1,7 @@
-<view class="publish-form">
+<view 
+class="publish-form"
+wx:if="{{showPage}}"
+>
   <form bindsubmit="publishSumbmit">
     <input
     type="text"
@@ -118,6 +121,37 @@
   bindcategoryevent="onCategorySelected"
   wx:if="{{showCategorySelect}}"
   ></category-select>
+</view>
+
+<view
+wx:else
+>
+  <swiper
+  indicator-color="#aaa"
+  indicator-active-color="#1FA4FC"
+  autoplay
+  circular
+  style="height: 100vh;"
+  >
+    <swiper-item>
+      <image 
+      mode="aspectFill"
+      src="cloud://hustmall-5gudfp1u6322154e.6875-hustmall-5gudfp1u6322154e-1307983764/images/3-c.jpg"
+      ></image>
+    </swiper-item>
+    <swiper-item>
+      <image 
+      mode="aspectFill"
+      src="cloud://hustmall-5gudfp1u6322154e.6875-hustmall-5gudfp1u6322154e-1307983764/images/2-c.jpg"
+      ></image>
+    </swiper-item>
+    <swiper-item>
+      <image 
+      mode="aspectFill"
+      src="cloud://hustmall-5gudfp1u6322154e.6875-hustmall-5gudfp1u6322154e-1307983764/images/1-c.jpg"
+      ></image>
+    </swiper-item>
+  </swiper>
 </view>
 
 <authorized-login

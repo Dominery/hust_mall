@@ -18,9 +18,11 @@ async function getOpenid() {
 //   })
 // }
 
+const expctedTime = Date.parse(new Date(2021,10,5,22))
 
 async function getGloablData(User){
   const globalData = {}
+  globalData.isExamined = Date.now() > expctedTime
   const openid = await wx.getStorage({key:"_openid"})
                   .then(res=>res.data)
                   .catch(res=>'') || await getOpenid();
