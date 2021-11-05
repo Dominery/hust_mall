@@ -32,6 +32,9 @@ Page({
         .run(userInfo=>{
           Storage.set('registered',true)
           Storage.set('userInfo',userInfo)
+          this.setData({
+            registered: true
+          })
           this.onShow()
         })
   },
@@ -61,12 +64,11 @@ Page({
       })
       return
     }
-    const userInfo = Storage.get('userInfo')
     this.setData({
-      userInfo
+      userInfo: Storage.get('userInfo')
     })
-
-    Product.getUserProduct(userInfo._openid)
+    const _openid = Storage.get('_openid')
+    Product.getUserProduct(_openid)
       .then(data=>{
         const group = groupBy(data,item=>item.saled)
         this.setData({
@@ -75,7 +77,7 @@ Page({
         })
       })
 
-    Collection.getFollowed(userInfo._openid)
+    Collection.getFollowed(_openid)
       .then(collect=>{
         const productIds = collect.map(item=>item.productid)
         return Product.getProducts(productIds)

@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/publish/publish",
     "pages/user/user",
+    "pages/publish/publish",
     "pages/search/search",
     "pages/user_publish/user_publish",
     "pages/user_saled/user_saled",

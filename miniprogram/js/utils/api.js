@@ -1,4 +1,4 @@
-function showModal(content,title='Note',cancelMsg='取消',showCancel=true) {
+function showModal(content,title='Note',showCancel=true,cancelMsg='取消') {
   return wx.showModal({
     cancelColor: '#aaa',
       comfirmColor: '#1FA4FC',

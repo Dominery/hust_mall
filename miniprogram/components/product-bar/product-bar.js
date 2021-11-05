@@ -31,7 +31,7 @@ Component({
       wx.setClipboardData({
         data: this.data.product.qq,
       }).then(res=>{
-        Api.showModal('本平台仅提供联系方式，钱货须当面交接，谨防受骗','复制成功',showCancel=false)
+        Api.showModal('本平台仅提供联系方式，钱货须当面交接，谨防受骗','复制成功',false)
       })
     },
     collectTapHandler(){
@@ -72,7 +72,7 @@ Component({
       }
     },
     _hasAccess(){
-      if(this.data.openid){
+      if(Storage.get('registered')){
         return true
       }
       wx.showToast({
@@ -98,7 +98,7 @@ Component({
   },
   lifetimes: {
     ready(){
-      const openid = Storage.get('userInfo')?._openid || ''
+      const openid = Storage.get('_openid') || ''
       this.setData({
         openid
       })

@@ -27,6 +27,7 @@ async function getGloablData(User){
                   .then(res=>res.data)
                   .catch(res=>'') || await getOpenid();
   const userInfo = await User.getInfo(openid);
+  globalData._openid = openid
   globalData.registered = Boolean(userInfo);
   if(!userInfo){
     return globalData
