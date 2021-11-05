@@ -1,8 +1,10 @@
 <view class="search">
   <view class="search-box">
     <view class="search-box__wrapper">
-      <input type="text" 
+      <input 
+      type="text" 
       model:value="{{inputValue}}"
+      bindinput="inputHandler"
       class="search-box__input"
       placeholder="{{placeholder}}"
       />
@@ -18,7 +20,8 @@
       </view>
     </view>
   </view>
-  <view class="search-button"
+  <view 
+  class="search-button"
   wx:if="{{inputValue}}"
   bindtap="submit"
   >搜索</view>

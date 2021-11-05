@@ -1,3 +1,4 @@
+const { Product } = require('../../js/controller/index')
 // pages/search/search.js
 Page({
 
@@ -5,14 +6,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    keyword: "hello",
+    searchProducts: []
   },
-
+  search(e){
+    const { keyword } = e.detail
+    this.setData({
+      keyword
+    })
+    wx.showLoading({
+      title: '搜索中',
+    })
+    this._addMoreProducts([])
+      .finally(()=>{
+        wx.hideLoading()
+      })
+  },
+  _addMoreProducts(products){
+    const { keyword } = this.data
+    return Product.search(keyword,products.length)
+      .then(searchResults=>{
+        this.setData({
+          searchProducts: products.concat(searchResults)
+        })
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const eventChanel = this.getOpenerEventChannel()
+    eventChanel.on('search',keyword=>{
+      this.setData({
+        keyword
+      })
+      this._addMoreProducts([])
+    })
   },
 
   /**

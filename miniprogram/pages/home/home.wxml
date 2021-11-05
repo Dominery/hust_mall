@@ -49,6 +49,11 @@
     {{item.value}}
   </view>
 </scroll-view>
+  <view class="empty-info"
+  wx:if="{{!products.length}}"
+  >
+    {{emptyInfo}}
+  </view>
   <view class="product-list">
       <view class="column">
         <view 

@@ -1,2 +1,14 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="headbac"></view>
+<view class="page-wrapper">
+  <search-box 
+  inputValue="{{keyword}}"
+  bind:searchevent="search"
+  />
+</view>
+<view class="list-wrapper">
+<product-list 
+showManage="{{false}}"
+products="{{searchProducts}}"
+emptyInfo = "没有搜到相关商品"
+/>
+</view>

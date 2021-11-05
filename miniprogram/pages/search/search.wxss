@@ -1,1 +1,16 @@
 /* pages/search/search.wxss */
+.headbac {
+  padding-top: 20rpx;
+  height: 100rpx;
+  margin-bottom: -100rpx;
+  background-color: var(--dark-blue);
+}
+
+.list-wrapper {
+  position: absolute;
+  top: 120rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 20rpx;
+}

@@ -75,6 +75,16 @@ function getProducts(ids) {
   }).get().then(res=>res.data)
 }
 
+function search(value,skipNum = 0) {
+  return Product.where({
+    title: {
+      $regex:'.*' + value,
+      $options: 'i'
+    }
+  }).skip(skipNum).get().then(res=>res.data)
+}
+
 module.exports = {
-  create,getList, markSaled, getUserProduct,deleteProduts, getProducts
+  create,getList, markSaled, getUserProduct,deleteProduts, 
+  getProducts, search
 }

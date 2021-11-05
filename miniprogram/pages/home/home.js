@@ -1,5 +1,6 @@
 const {categories} = require('../../js/data')
 const { Product } = require('../../js/controller/index')
+const { Api, Route } = require('../../js/utils/index')
 // pages/home/home.js
 Page({
 
@@ -9,13 +10,16 @@ Page({
   data: {
     categories:categories,
     currentTab:'recommend',
-    products:[]
+    products:[],
+    emptyInfo: '没有东西啦'
   },
   searchHandler(e){
-    wx.showToast({
-      title: '没有相关商品',
-      icon: 'error'
-    })
+    const { keyword } = e.detail
+    Route.push('../search/search','search',keyword)
+    // wx.showToast({
+    //   title: '没有相关商品',
+    //   icon: 'error'
+    // })
   },
   navTapHandler(e){
     const currentTab = e.target.id
@@ -47,7 +51,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this._setProductList(this.data.currentTab)
+    this._setProductList(this.data.currentTab)
   },
 
   /**

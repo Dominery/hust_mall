@@ -12,6 +12,10 @@ Component({
     showManage: {
       type: Boolean,
       value: true
+    },
+    emptyInfo: {
+      type: String,
+      value: '不用找了，这里没有东西吶'
     }
   },
 
@@ -21,8 +25,7 @@ Component({
   data: {
     chooseIds:[],
     atManage: false,
-    allSelect: false,
-    emptyInfo: '不用找了，这里没有东西吶'
+    allSelect: false
   },
   observers: {
     chooseIds(ids){
