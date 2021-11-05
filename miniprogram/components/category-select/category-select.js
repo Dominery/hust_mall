@@ -19,7 +19,8 @@ Component({
       type:Number,
       value:0
     },
-    pickedCategory:""
+    pickedCategory:"",
+    _picked:false
   },
   observers:{
   },
@@ -28,6 +29,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    pickStart(e){
+      this.setData({
+        _picked: false
+      })
+    },
+    pickEnd(e){
+      this.setData({
+        _picked:true
+      })
+    },
     pickHandler(e){
       const pick = e.detail?.value
       if(Array.isArray(pick)){
@@ -38,9 +49,16 @@ Component({
       }
     },
     confirm(){
-      const eventDetail = {}
-      eventDetail.category = this.properties.pickedCategory
-      this.triggerEvent('categoryevent',eventDetail)
+      const { pickedCategory, _picked } = this.data
+      if(_picked){
+        this.triggerEvent('categoryevent',{ category: pickedCategory })
+        return
+      }
+      wx.showToast({
+        title: '选择过快',
+        icon: 'error',
+        duration: 500
+      })
     }
   },
   lifetimes: {

@@ -12,6 +12,8 @@
         indicator-class="picker-view__indicator"
         value="{{[defaultPos]}}"
         bindchange="pickHandler"
+        bindpickstart="pickStart"
+        bindpickend="pickEnd"
       >
         <picker-view-column
         >

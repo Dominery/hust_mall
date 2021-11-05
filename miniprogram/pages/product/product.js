@@ -9,6 +9,12 @@ Page({
     product:{},
     abrase:''
   },
+  previewImg(){
+    const { imgUrls } = this.data.product
+    wx.previewImage({
+      urls: imgUrls,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
