@@ -25,9 +25,11 @@
     </view>
     
     <view class="add-photo__item" wx:if="{{limit > photos.length}}">
+      <view class="add-photo__icon">
       <operator 
       bindtouchstart="addPhoto"
       />
+      </view>
     </view>
   </view>
 </view>

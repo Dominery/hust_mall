@@ -24,6 +24,14 @@ Component({
     allSelect: false,
     emptyInfo: '不用找了，这里没有东西吶'
   },
+  observers: {
+    chooseIds(ids){
+      const { products } = this.data
+      this.setData({
+        allSelect: products.length === ids.length
+      })
+    }
+  },
 
   /**
    * 组件的方法列表
@@ -40,21 +48,19 @@ Component({
       }
       
       this.setData({
-        chooseIds, allSelect:chooseIds.length === this.data.products.length
+        chooseIds
       })
     },
     allSelectTap(){
       const { allSelect } = this.data
       if(allSelect){
         this.setData({
-          chooseIds: [],
-          allSelect: false
+          chooseIds: []
         })
       }else {
         const chooseIds = this.data.products.map(item=>item._id)
         this.setData({
-          chooseIds,
-          allSelect: true
+          chooseIds
         })
       }
     },
@@ -73,8 +79,7 @@ Component({
       const { atManage } = this.data
       this.setData({
         atManage: !atManage,
-        chooseIds: [],
-        allSelect: false
+        chooseIds: []
       })
     }
   }

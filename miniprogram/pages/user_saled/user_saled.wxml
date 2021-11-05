@@ -1,7 +1,8 @@
-
-<product-list 
-products= "{{products}}"
-id="product-list"
-bind:deleteevent="delete"
-showManage="{{false}}"
-></product-list>
+<view class="page">
+  <product-list 
+  products= "{{products}}"
+  id="product-list"
+  bind:deleteevent="delete"
+  showManage="{{false}}"
+  ></product-list>
+</view>

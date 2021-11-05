@@ -1,10 +1,10 @@
 <view class="number-select">
-    <operator dec="true" light="true" 
+    <operator dec="true"
     class="number-select__operator"
     bindtap="dec"
     ></operator>
     <text class="number-select__num">{{value}}</text>
-    <operator light="true" class="number-select__operator"
+    <operator  class="number-select__operator"
     bindtap="add"
     ></operator>
 </view>

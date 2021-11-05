@@ -29,13 +29,7 @@ function getFollowed(_openid) {
 }
 
 function unFollowProducts(_openid,productIds) {
-  return wx.cloud.callFunction({
-    name: 'deleteCollections',
-    data: {
-      _openid,
-      productIds
-    }
-  }).then(res=>res.result.data)
+  return Promise.all(productIds.map(productId=>unfollow(_openid,productId)))
 }
 
 module.exports = {

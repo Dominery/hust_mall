@@ -8,10 +8,6 @@ Component({
       type: String,
       value:''
     },
-    middle: {
-      type: Boolean,
-      value: true
-    },
     inputValue: ''
   },
 
@@ -19,45 +15,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-    showCancel: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    inputFocus(e){
-      this.setData({
-        middle: false
-      })
-    },
-    inputBlur(e){
-      if(!e.detail.value){
-        this.setData({
-          middle: true
-        })
-      }
-    },
     inputHandler(e){
-      const {value} = e.detail
-      const { showCancel } = this.data
-      if(!value) {
-        this.setData({
-          showCancel: false
-        })
-        return
-      }
-      if(!showCancel){
-        this.setData({
-          showCancel:true
-        })
-      }
     },
     clearInput(e){
       this.setData({
-        inputValue: '',
-        showCancel: false,
-        middle: true
+        inputValue: ''
       })
     },
     submit(e){

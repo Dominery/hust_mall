@@ -1,12 +1,10 @@
 .page {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 100rpx;
+  height: 100%;
+  position: relative;
 }
 .product-list__head {
   overflow: hidden;
+  height: 60rpx;
   background-color: var(--little-gray);
   border-bottom: 1px solid var(--light-gray);
   text-align: right;
@@ -19,7 +17,20 @@
 .page-wrapper {
   padding: 10rpx 20rpx;
 }
-
+.product-list__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+.product-list__body--top {
+  top: 60rpx;
+}
+.product-list__body--bottom {
+  bottom: 100rpx;
+}
 .product-container {
   margin-top: 40rpx;
   display: flex;
@@ -42,6 +53,7 @@
   bottom: 0;
   width: 100%;
   box-sizing: border-box;
+  height: 100rpx;
 }
 .batch-select {
   display: flex;

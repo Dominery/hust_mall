@@ -2,7 +2,6 @@
 .operator {
   width: 100%;
   height: 100%;
-  background-color: var(--little-gray);
   position: relative;
 }
 
@@ -10,6 +9,11 @@
   position: absolute;
   background-color: var(--dark-gray);
   transform: translate(-50%,-50%);
+}
+
+.operator--light .operator__row,
+.operator--light .operator__col {
+  background-color: #fff;
 }
 
 .operator__row {
@@ -28,8 +32,4 @@
 
 .operator--dec .operator__col{
   display: none;
-}
-
-.operator--light {
-  background-color: #fff;
 }

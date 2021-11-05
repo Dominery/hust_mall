@@ -69,8 +69,8 @@ Page({
       .then(data=>{
         const group = groupBy(data,item=>item.saled)
         this.setData({
-          saled: group.get(true),
-          publish: group.get(false)
+          saled: group.get(true) || [],
+          publish: group.get(false) || []
         })
       })
 

@@ -16,6 +16,9 @@
   padding: 20rpx;
   box-sizing: border-box;
 }
+.add-photo__icon {
+  background-color: var(--little-gray);
+}
 
 .add-photo__delete {
   position: absolute;

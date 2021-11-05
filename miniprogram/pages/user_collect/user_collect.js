@@ -12,6 +12,9 @@ Page({
   delete(e){
     const { chooseIds } = e.detail
     const { _openid } = Storage.get('userInfo')
+    wx.showLoading({
+      title: '删除中',
+    })
     Collection.unFollowProducts(_openid,chooseIds)
       .then(res=>{
         const products = this.data.products.filter(item=>!chooseIds.includes(item._id))
@@ -21,6 +24,8 @@ Page({
         Api.successToast('取消关注成功')
       }).catch(res=>{
         Api.errorToast('操作失败')
+      }).finally(()=>{
+        wx.hideLoading()
       })
   },
   /**

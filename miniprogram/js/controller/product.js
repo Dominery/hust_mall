@@ -28,7 +28,8 @@ async function create(data){
 function getRecommendList() {
   return Product.where({
     saled: false
-  }).get().then(res=>res.data)
+  }).orderBy('createdTime','desc')
+  .get().then(res=>res.data)
 }
 
 function getList(tab) {

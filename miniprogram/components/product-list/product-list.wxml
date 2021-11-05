@@ -25,7 +25,7 @@
       >{{ atManage?'完成':'管理'}}</text>
     </view>
     </block>
-  <view class="page-wrapper">
+  <view class="page-wrapper product-list__body {{atManage?'product-list__body--bottom':''}} {{showManage?'product-list__body--top':''}}">
     <view 
     class="product-container"
     wx:for="{{products}}"

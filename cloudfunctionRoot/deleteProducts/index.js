@@ -12,8 +12,6 @@ const Product = db.collection('product')
 
 exports.main = async (event,context)=>{
   const { ids } = event
-  return Product.where({
-    _id: _.in(ids)
-  }).remove()
+  return Promise.all(ids.map(id=>Product.doc(id).remove()))
 }
 

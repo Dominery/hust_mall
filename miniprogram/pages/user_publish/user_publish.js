@@ -25,6 +25,7 @@ Page({
         this.setData({
           products
         })
+        Api.successToast('删除成功')
       }).catch(err=>{
         console.log(err)
       }).finally(()=>{
