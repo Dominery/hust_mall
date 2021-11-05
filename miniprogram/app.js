@@ -18,7 +18,7 @@ async function getOpenid() {
 //   })
 // }
 
-const expctedTime = Date.parse(new Date(2021,10,6,6))
+const expctedTime = Date.parse(new Date(2021,10,6,8,30))
 
 async function getGloablData(User){
   const globalData = {}

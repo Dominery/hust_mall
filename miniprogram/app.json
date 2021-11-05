@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/user/user",
     "pages/publish/publish",
+    "pages/user/user",
     "pages/search/search",
     "pages/user_publish/user_publish",
     "pages/user_saled/user_saled",
@@ -28,8 +28,8 @@
       },
       {
         "pagePath": "pages/publish/publish",
-        "iconPath": "images/publish.png",
-        "selectedIconPath": "images/publish-active.png"
+        "iconPath": "images/pub.png",
+        "selectedIconPath": "images/pub-active.png"
       },
       {
         "pagePath": "pages/user/user",
