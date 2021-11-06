@@ -66,6 +66,23 @@ const clauseInfo = `
 </div>
 `
 
+const secondeClause = `
+<div class="clause">
+<h1 class="title">HUST跳蚤市场服务条款</h1>
+<h2 class="title">一、账户使用</h2>
+<h3 class="title">1.1 用户资格</h3>
+<p>您确认，在您开始使用HUST跳蚤市场服务前，您应当具备中华人民共和国法律规定的与您行为相适应的民事行为能力。若您不具备前述与您行为相适应的民事行为能力则您及您的监护人应依照法律规定承担因此而导致的一切后果。</p>
+<h3 class="title">1.2 账户说明</h3>
+<p>鉴于HUST跳蚤市场服务系基于您的微信账户为您提供，您有权使用您的微信账户登录HUST跳蚤市场并使用相关服务，您的账户仅限本人使用。</p>
+<h2 class="title">二、HUST跳蚤市场服务及规范</h2>
+<p><strong>【服务概况】</strong>您有权在HUST跳蚤市场上享受闲置资源信息的浏览、收藏、校园壁纸欣赏等服务。</p>
+<h3 class="title">2.1 闲置商品/服务信息的浏览、收藏</h3>
+<p>在您浏览HUST跳蚤市场的过程中，HUST跳蚤市场为您提供了信息分类、关键词检索、筛选、收藏及关注等功能，以更好地匹配您的需求。您可以对您感兴趣的闲置商品/服务进行收藏。</p>
+<h2 class="title">三、用户信息的保护及授权</h2>
+<h3 class="title">3.1 个人信息的保护</h3>
+<p>HUST跳蚤市场非常重视用户个人信息的保护，在您使用HUST跳蚤市场提供的服务时，您同意HUST跳蚤市场按照在HUST跳蚤市场上公布的隐私权政策收集、存储、使用、披露和保护您的个人信息。HUST跳蚤市场希望通过隐私权政策向您清楚地介绍HUST跳蚤市场对个人信息的处理方式，因此HUST跳蚤市场建议您完整地阅读隐私权政策，以帮助您更好地保护您的个信息。</p>
+`
+
 module.exports = {
-  categories, clauseInfo
+  categories, clauseInfo, secondeClause
 }

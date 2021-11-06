@@ -1,4 +1,4 @@
-const { clauseInfo } = require('../../js/data')
+const { clauseInfo, secondClause } = require('../../js/data')
 const { Storage } = require('../../js/utils/index')
 // pages/clause/clause.js
 Page({
@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    clause: clauseInfo
+    clause: clauseInfo,
+    secondClause:secondClause
   },
 
   /**

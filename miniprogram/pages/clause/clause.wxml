@@ -1,8 +1,7 @@
 <view class="wrapper"
-wx:if="{{showPage}}"
 >
 <rich-text
-nodes="{{clause}}"
+nodes="{{showPage?clause:secondClause}}"
 >
 </rich-text>
 </view>
