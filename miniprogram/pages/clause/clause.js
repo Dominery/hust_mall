@@ -1,4 +1,5 @@
 const { clauseInfo } = require('../../js/data')
+const { Storage } = require('../../js/utils/index')
 // pages/clause/clause.js
 Page({
 
@@ -13,7 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      showPage: Storage.get('isExamined')
+    })
   },
 
   /**

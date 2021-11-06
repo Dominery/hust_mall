@@ -19,6 +19,10 @@ Page({
         products
       })
     })
+    if(!Storage.get('isExamined')){ return }
+    wx.setNavigationBarTitle({
+      title: '我售出的',
+    })
   },
 
   /**

@@ -1,4 +1,6 @@
-<view class="wrapper">
+<view class="wrapper"
+wx:if="{{showPage}}"
+>
 <rich-text
 nodes="{{clause}}"
 >
