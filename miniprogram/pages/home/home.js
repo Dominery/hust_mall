@@ -38,11 +38,15 @@ Page({
       res.eventChannel.emit('productInfo',product)
     })
   },
-  _setProductList(tab){
-    return Product.getByTab(tab)
-    .then(products=>{
+  _setProductList(tab,products=[]){
+    return Product.getByTab(tab, products.length)
+    .then(newProducts=>{
+      if(newProducts.length===0){
+        Api.errorToast('没有更多商品')
+        return
+      }
       this.setData({
-        products
+        products:products.concat(newProducts)
       })
     })
   },
@@ -99,7 +103,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    wx.showLoading({
+      title: '加载中',
+    })
+    const { products, currentTab } = this.data
+    this._setProductList(currentTab,products).finally(()=>{
+      wx.hideLoading()
+    })
   },
 
   /**

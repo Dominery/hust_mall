@@ -94,7 +94,8 @@ function search(value,skipNum = 0) {
     title: {
       $regex:'.*' + value,
       $options: 'i'
-    }
+    },
+    saled: false
   })
   return getList(getLogic,skipNum)
 }

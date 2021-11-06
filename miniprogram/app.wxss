@@ -11,6 +11,7 @@ image {
 }
 
 page{
+  height: 101%;
   font-size: 30rpx;
   --little-gray: #f8f8f8;
   --light-gray:#C1C0C9;

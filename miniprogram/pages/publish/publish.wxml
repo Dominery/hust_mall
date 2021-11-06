@@ -8,7 +8,6 @@ wx:if="{{showPage}}"
     class="product-title"
     placeholder="{{inputItems.title.placeholder}}"
     maxlength="20"
-    auto-focus
     name="title"
     value="{{clearValue}}"
     />
