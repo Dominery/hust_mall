@@ -95,10 +95,16 @@ Component({
       const index = getIndex(e)
       if(index==-1)return;
       const photos = this.data.photos
-      photos[index].touch = ! photos[index].touch
+      photos[index].touch = true
       this.setData({
         photos
       })
+      setTimeout(() => {
+        photos[index].touch = false
+        this.setData({
+          photos
+        })
+      }, 1000);
     },
     clear(e){
       this.setData({

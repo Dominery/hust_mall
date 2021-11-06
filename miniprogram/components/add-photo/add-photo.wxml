@@ -13,7 +13,7 @@
           >
             <image src="{{item.path}}" class="add-photo__itemImg"
             mode="aspectFill"></image>
-            <view class="add-photo__delete" bindlongpress="deletePhoto"
+            <view class="add-photo__delete" catchtap="deletePhoto"
             mark:index="{{index}}"
             wx:if="{{item.touch}}"
             >

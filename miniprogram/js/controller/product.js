@@ -25,21 +25,33 @@ async function create(data){
   }
 }
 
+
+
 function getRecommendList() {
   return Product.where({
     saled: false
-  }).orderBy('createdTime','desc')
-  .get().then(res=>res.data)
+  })
 }
 
-function getList(tab) {
-  if(tab==="recommend"){
-    return getRecommendList()
-  }
+function getCategoryList(tab) {
   return Product.where({
     category: tab,
     saled: false
-  }).get().then(res=>res.data)
+  })
+}
+
+function getList(getLogic,skipNum) {
+  return getLogic
+  .skip(skipNum)
+  .get().then(res=>res.data)
+  .then(data=>data.sort((pre,next)=>{
+    return Date.parse(next.createdTime)-Date.parse(pre.createdTime)
+  }))
+}
+
+function getByTab(tab,skipNum=0) {
+  const getLogic = tab === "recommend" ? getRecommendList(): getCategoryList(tab)
+  return getList(getLogic,skipNum)
 }
 
 function markSaled(_id) {
@@ -50,13 +62,14 @@ function markSaled(_id) {
   })
 }
 
-function getUserProduct(_openid) {
-  return Product.where({
+function getByOpenid(_openid,skipNum=0) {
+  const getLogic = Product.where({
     _openid
-  }).get().then(res=>res.data)
+  })
+  return getList(getLogic,skipNum)
 }
 
-function deleteProduts(ids,imgUrls) {
+function deleteById(ids,imgUrls) {
   return wx.cloud.deleteFile({
     fileList: imgUrls
   }).then(res=>{
@@ -69,22 +82,24 @@ function deleteProduts(ids,imgUrls) {
   })
 }
 
-function getProducts(ids) {
-  return Product.where({
+function getById(ids,skipNum = 0) {
+  const getLogic = Product.where({
     _id:_.in(ids)
-  }).get().then(res=>res.data)
+  })
+  return getList(getLogic,skipNum)
 }
 
 function search(value,skipNum = 0) {
-  return Product.where({
+  const getLogic = Product.where({
     title: {
       $regex:'.*' + value,
       $options: 'i'
     }
-  }).skip(skipNum).get().then(res=>res.data)
+  })
+  return getList(getLogic,skipNum)
 }
 
 module.exports = {
-  create,getList, markSaled, getUserProduct,deleteProduts, 
-  getProducts, search
+  create,getByTab, markSaled, getByOpenid,deleteById, 
+  getById, search
 }

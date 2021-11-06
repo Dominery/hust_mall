@@ -68,7 +68,7 @@ Page({
       userInfo: Storage.get('userInfo')
     })
     const _openid = Storage.get('_openid')
-    Product.getUserProduct(_openid)
+    Product.getByOpenid(_openid)
       .then(data=>{
         const group = groupBy(data,item=>item.saled)
         this.setData({
@@ -80,7 +80,7 @@ Page({
     Collection.getFollowed(_openid)
       .then(collect=>{
         const productIds = collect.map(item=>item.productid)
-        return Product.getProducts(productIds)
+        return Product.getById(productIds)
       }).then(products=>{
         this.setData({
           collect: products

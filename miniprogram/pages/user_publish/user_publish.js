@@ -19,7 +19,7 @@ Page({
         const imgUrls = this.data.products
           .filter(item=>chooseIds.includes(item._id))
           .flatMap(item=>item.imgUrls)
-        return Product.deleteProduts(chooseIds,imgUrls)
+        return Product.deleteById(chooseIds,imgUrls)
       }).then(res=>{
         const products = this.data.products.filter(item=>!chooseIds.includes(item._id))
         this.setData({

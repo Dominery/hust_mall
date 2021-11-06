@@ -39,7 +39,7 @@ Page({
     })
   },
   _setProductList(tab){
-    return Product.getList(tab)
+    return Product.getByTab(tab)
     .then(products=>{
       this.setData({
         products
