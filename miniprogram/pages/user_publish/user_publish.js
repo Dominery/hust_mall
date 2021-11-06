@@ -27,7 +27,7 @@ Page({
         })
         Api.successToast('删除成功')
       }).catch(err=>{
-        console.log(err)
+        Api.successToast('删除失败')
       }).finally(()=>{
         wx.hideLoading()
       })

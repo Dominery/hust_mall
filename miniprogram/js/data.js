@@ -2,8 +2,11 @@ const categories = [{
   value:'学习',
   id:'learn'
 },{
-  value:'数码',
+  value:'电子',
   id: 'digit'
+},{
+  value:'日用品',
+  id: 'live'
 },{
   value:'食品',
   id:'food'

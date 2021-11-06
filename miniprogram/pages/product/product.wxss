@@ -67,7 +67,7 @@
 
 .product-img {
   margin: 40rpx 0;
-  height: 400rpx;
+  height: 150vw;
 }
 
 .product-content {

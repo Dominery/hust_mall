@@ -18,6 +18,8 @@
 }
 .home-ad {
   margin-top: 40rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
 }
 
 .nav {

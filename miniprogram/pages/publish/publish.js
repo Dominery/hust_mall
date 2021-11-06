@@ -79,7 +79,7 @@ Page({
             duration: 2000
           })
         }).then(()=>{
-          Route.push('../product/product','productInfo',data)
+          Route.push('../product/product','productInfo',{...data,_openid:Storage.get('_openid')})
         })
     }
 

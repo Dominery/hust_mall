@@ -21,7 +21,6 @@ Page({
    */
   onLoad: function (options) {
 
-    console.log(options.query)
     const eventChanel = this.getOpenerEventChannel()
     eventChanel.on('productInfo',product=>{
       this.setData({
