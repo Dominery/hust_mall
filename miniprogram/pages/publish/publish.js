@@ -132,6 +132,9 @@ Page({
         .run(userInfo=>{
           Storage.set('registered',true)
           Storage.set('userInfo',userInfo)
+          this.setData({
+            registered: true
+          })
           this.onShow()
         })
   },

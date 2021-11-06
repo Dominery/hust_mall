@@ -126,7 +126,7 @@ wx:if="{{showPage}}"
 wx:else
 >
   <view 
-  style="position: absolute;top: 0;text-align: center;width: 100%;z-index: 2;font-size: 60rpx;color:white;">
+  style="position: absolute;top: 0;text-align: center;width: 100%;z-index: 2;font-size: 60rpx;color:#ccc;">
     校园精美壁纸展示
   </view>
   <swiper
@@ -138,19 +138,19 @@ wx:else
   >
     <swiper-item>
       <image 
-      mode="aspectFill"
+      mode="aspectFit"
       src="cloud://hustmall-5gudfp1u6322154e.6875-hustmall-5gudfp1u6322154e-1307983764/images/3-c.jpg"
       ></image>
     </swiper-item>
     <swiper-item>
       <image 
-      mode="aspectFill"
+      mode="aspectFit"
       src="cloud://hustmall-5gudfp1u6322154e.6875-hustmall-5gudfp1u6322154e-1307983764/images/2-c.jpg"
       ></image>
     </swiper-item>
     <swiper-item>
       <image 
-      mode="aspectFill"
+      mode="aspectFit"
       src="cloud://hustmall-5gudfp1u6322154e.6875-hustmall-5gudfp1u6322154e-1307983764/images/1-c.jpg"
       ></image>
     </swiper-item>
