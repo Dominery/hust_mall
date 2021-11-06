@@ -2,7 +2,7 @@
   "usingComponents": {
     "product-list":"../../components/product-list/product-list"
   },
-  "navigationBarTitleText": "我的发布",
+  "navigationBarTitleText": "",
   "navigationBarBackgroundColor": "#f8f8f8"
  
 }

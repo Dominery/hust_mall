@@ -1,5 +1,5 @@
 const { Product } = require('../../js/controller/index')
-const { Api } = require('../../js/utils/index')
+const { Api, Storage } = require('../../js/utils/index')
 // pages/user_publish/user_publish.js
 Page({
 
@@ -42,6 +42,10 @@ Page({
       this.setData({
         products
       })
+    })
+    if(!Storage.get('isExamined')){ return }
+    wx.setNavigationBarTitle({
+      title: '我的发布',
     })
   },
 
