@@ -1,74 +1,58 @@
-function validator(predicfn,message) {
-  return data  => new Promise((resolve,reject)=>{
-    if(predicfn(data)){
-      resolve(data)
-    }
-    reject(message)
+function validate(failed,errMsg) {
+  return failed?errMsg:undefined;
+}
+function notStr(value) {
+  return typeof value !== 'string'
+}
+
+const validateStrategies = {
+  isNonEmpty: (value,errMsg)=>validate(notStr(value)||value==='',errMsg),
+  minLength: (value,errMsg,length)=>validate(value.length<length,errMsg),
+  isNumStr: (value, errMsg) => validate(notStr(value)||/[^\d]/.test(value),errMsg)
+}
+
+function Validator() {
+  this.validates = []
+}
+
+/**
+ * 
+ * @param {any} value 验证的数据
+ * @param {function} strategy validateRule
+ * @param {string} errMsg 错误提示
+ * @param  {...any} params validateRule的其余参数
+ * @returns {Validator}
+ */
+Validator.prototype.add = function(value,strategy,errMsg,...params) {
+  this.validates.push(()=>{
+    return strategy(value,errMsg,...params)
   })
+  return this;
 }
 
-
 /**
- * 校验data中属性值类型为String是否都有内容，返回
- * 一个Promise，如果通过校验，传递data，如果没通过，则错误消息
- * 为未通过的属性名
- * @param {Object} data 
- * @returns {Promise}
+ * 
+ * @param {any} value 待验证数据
+ * @param {Array} rules 如[{strategy:minLength,errMsg:'最少10',params:[10]}]
+ * @returns {Validator}
  */
-function strEmptyCheck(data) {
-  return new Promise((resolve,reject)=>{
-    const result = Object.entries(data).find(([key,value])=>{
-      return typeof value=== "string" && value ===""
-    })
-    if(result){
-      reject(result[0])
-    }
-    resolve(data)
+Validator.prototype.adds = function (value,rules) {
+  rules.forEach(rule=>{
+    const {strategy,errMsg,params=[]} = rule
+    this.add(value,strategy,errMsg,...params)
   })
+  return this;
 }
 
 /**
- * 输入属性值attr和长度num
- * 生成一个predict函数，该函数接收data，如果data的attr有length属性且大于num，返回true
- * @param {Number} num 
- * @returns {Function}
+ * 
+ * @returns 如果通过，返回undifined，否则返回字符串
  */
-function strMoreThan(attr,num) {
-  return data => {
-    return data[attr]?.length>=num
-  }
-}
-const notNumPatter = /[^\d]/
-/**
- * 生成一个predict函数，该函数接收data，如果data的attr属性不是整数字符串返回false
- * @param {String} attr 属性值
- */
-function numStr(attr) {
-  return data => {
-    return isStr(data,attr) && !notNumPatter.test(data[attr])
-  }
+Validator.prototype.validate = function () {
+  return this.validates.map(fn=>fn()).find(msg=>msg)
 }
 
-/**
- *  生成一个predict函数，该函数接收data，如果data的attr属性是数字字符串，将该属性修改成数字类型，并返回true
- * @param {String} attr 属性值
- */
-function strToNum(attr) {
-  return data => {
-    const num = Number(data[attr])
-    if(isStr(data,attr)&&!isNaN(num)){
-      data[attr] = num
-      return true
-    }
-    return false
-  }
-}
-
-
-function isStr(obj,attr) {
-  return typeof obj[attr] === "string"
-}
 
 module.exports= {
-  validator,strEmptyCheck,strMoreThan,numStr,strToNum
+  validateStrategies,Validator
 }
