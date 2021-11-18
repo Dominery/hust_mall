@@ -20,7 +20,7 @@ Component({
       value:0
     },
     pickedCategory:"",
-    _picked:false
+    _picked:true
   },
   observers:{
   },

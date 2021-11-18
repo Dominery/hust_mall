@@ -16,7 +16,6 @@ Page({
    */
   data: {
     registered:true,
-    showPage: true,
     categories:categories.map(category=>category.value),
     showCategorySelect:false,
     category:"",
@@ -197,9 +196,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  //  this.setData({
-  //    showPage: Storage.get('isExamined')
-  //  })
+   this.setData({
+     showPage: Storage.get('isExamined')
+   })
   },
 
   /**
